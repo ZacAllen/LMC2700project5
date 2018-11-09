@@ -1,4 +1,20 @@
 # LMC2700project5
+
+Deliverables
+-----------------------------------------------
+1. Friday, November 9: One Page Proposal
+The proposal should explain the roles you have taken on, the concept you wish to explore, the platform you plan to use, and justifications for how these choices fit together and complement one another. Be prepared to share your proposal in class.
+-----
+2. Friday, November 16: Draft Game
+Be prepared to share your progress with instructors during class.
+-----
+3. November 26, 28: In Class Presentations
+Each group will give a 3 minute summary of their deliverables. All deliverables should be condensed into a short powerpoint presentation of about 5 slides + a title slide including your names and the name of the project. Please practice your presentation beforehand and be prepared to answer questions.
+-----
+4. December 3: Final Game Submission
+-----
+
+
 Puzzle Pandemonium
 
 Roles: Each person is responsible for helping code, but will have an area to focus on when brainstorming new aspects. 
@@ -22,8 +38,13 @@ Justification: We aim to make our game a collaborative experience that lets the 
 Mechanics- We need to figure these out
 -----------------------------------------------------------------------------------------------
 Grid- 
+
 highlighting/drawing-
+
 Timer-
+
 Scoring-
+
 Difficulty settings-
+
 Player phases-
