@@ -26,11 +26,16 @@ void draw() {
   int mouseConstrainY = difficulty * Math.round(mouseY/difficulty);
   
   //control if spot has already been filled
+  try {
   if (mousePressed && filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] == 0 ) {
     fill(blockColor);
     rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
     filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
     //perhaps later with the 4th player we can compare their array to this array and calculate points based on that
+  }
+  } catch (Exception e){
+    // Prevents the game from crashing if clicked outside window
+    System.out.println("Array is out of bounds");
   }
 }
 
