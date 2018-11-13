@@ -44,7 +44,7 @@ void draw() {
     filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
     //perhaps later with the 4th player we can compare their array to this array and calculate points based on that
   }
-  } catch (Exception e){
+  } catch (Exception e) {
     // Prevents the game from crashing if clicked outside window
     System.out.println("Array is out of bounds");
   }
