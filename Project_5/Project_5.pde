@@ -5,6 +5,8 @@ int canvasHeight = 1000;
 int gridWidth = 1000;
 int gridHeight = 1000;
 int difficulty = 100;
+Timer startTimer;
+PImage logo;
 
 // Stored colors for each player
 color player1color = #CC0000;
@@ -24,6 +26,9 @@ void settings() {
 
 void setup() {
   background(255);
+  startTimer = new Timer(120);
+  logo = loadImage("logo.jpg");
+  logo.resize(40, 40);
 }
 
 void draw() {
@@ -32,6 +37,13 @@ void draw() {
     line(0, i, gridWidth, i);
   }
   line(gridWidth, 0, gridWidth, gridHeight);
+  image(logo, 1100, 100);
+  startTimer.countDown();
+  textSize(30);
+  fill(255);
+  rect(1040, 930, 400, 100);
+  fill(0);
+  text("Time Left: " + nf(startTimer.getTime(), 0, 2) + " seconds", 1050, 980);
   
   int mouseConstrainX = difficulty * Math.round(mouseX/difficulty);
   int mouseConstrainY = difficulty * Math.round(mouseY/difficulty);
