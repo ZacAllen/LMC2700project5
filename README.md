@@ -15,7 +15,7 @@ Each group will give a 3 minute summary of their deliverables. All deliverables 
 -----
 
 
-Puzzle Pandemonium
+Copycat
 
 Roles: Each person is responsible for helping code, but will have an area to focus on when brainstorming new aspects.
 
