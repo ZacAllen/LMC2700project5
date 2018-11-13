@@ -17,7 +17,7 @@ Each group will give a 3 minute summary of their deliverables. All deliverables 
 
 Puzzle Pandemonium
 
-Roles: Each person is responsible for helping code, but will have an area to focus on when brainstorming new aspects. 
+Roles: Each person is responsible for helping code, but will have an area to focus on when brainstorming new aspects.
 
 Concept Builder: Paula, will make sure that the game stays within the original concept and any new additions contribute to that idea
 
@@ -27,7 +27,7 @@ Craft Engineer: Kameron, will have the group focus on maintaining realistic and 
 
 Game Mechanic: Joseph, because he’s a G
 
-Concept: Puzzle Pandemonium is a memory-based drawing game in which three players take turns constructing shapes over a playing grid and a fourth player attempts to reconstruct the picture created by the first three in a limited time.   
+Concept: Puzzle Pandemonium is a memory-based drawing game in which three players take turns constructing shapes over a playing grid and a fourth player attempts to reconstruct the picture created by the first three in a limited time.
 
 Platform: For this project we plan to use Java in the Processing environment in order to create our game. We feel as though this environment is the most well-known among all of our group members and offers the greatest flexibility for simple, intuItive gameplay.
 
@@ -35,16 +35,16 @@ Platform: For this project we plan to use Java in the Processing environment in 
 Justification: We aim to make our game a collaborative experience that lets the players interact with each other more than with the game. As we were brainstorming, our group members naturally gravitated towards certain roles and we felt as though this concept allowed us to meld our goals of interaction and collaboration.
 
 
-Mechanics- We need to figure these out
+Current Mechanics
 -----------------------------------------------------------------------------------------------
-Grid- 
+Grid- Series of squares drawn using size of grid as constraint. 2D array is updated whenever the mouse is dragged over the corresponding square. Currently the frame is 500px wider than the grid, so there is a window to the right where we can write information for the players, such as the timer or how many squares they can still fill.
 
-highlighting/drawing-
+Highlighting/drawing- The 2D backing array is filled by the player's number whenever they draw on the grid.
 
-Timer-
+Timer- Only for the 4th player. It will possibly shrink corresponding to difficulty.
 
-Scoring-
+Scoring- Current values: +10 if the squares match, +5 if the numbers don't match but are not null, -5 if old is null but new is not or if new is null but old is not.
 
-Difficulty settings-
+Difficulty settings- Currently affects the number of squares in the grid. Could potentially affect timer length or other variables.
 
-Player phases-
+Player phases- Will be separated by screens that require action, so that the players can pass the computer easily.
