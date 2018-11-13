@@ -6,6 +6,7 @@ int difficulty = 100;
 color blockColor = #CC0000;
 int player = 1;
 int [][] filled = new int[canvasWidth/difficulty][canvasHeight/difficulty];
+Timer startTimer;
 
 
 void settings() {
@@ -14,13 +15,17 @@ void settings() {
 void setup() {
 
   background(255);
-  
+  startTimer = new Timer(600);
 }
 void draw() {
   for (int i = 0; i < canvasWidth; i += difficulty) {
     line(i, 0, i, canvasHeight);
     line(0, i, canvasWidth, i);
   }
+  
+  startTimer.countDown();
+  textSize(30);
+  text(startTimer.getTime(), 800, 980);
   
   int mouseConstrainX = difficulty * Math.round(mouseX/difficulty);
   int mouseConstrainY = difficulty * Math.round(mouseY/difficulty);
