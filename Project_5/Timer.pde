@@ -20,10 +20,14 @@ class Timer{
   
   //update timer by counting down
   void countDown(){
+<<<<<<< HEAD
     Time -= 1/frameRate;
     if (Time < 0){
       Time = 0.0;
     }
+=======
+    Time -= frameRate;
+>>>>>>> 49aa51e16b17388d7be9e6e3c247b38daf487660
   }
   
   float getMin(float set){
