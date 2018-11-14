@@ -112,16 +112,22 @@ void copyMode() {
 
 
 void scoreUpdate(int x, int y){
+  //if colors are the same
   if (copyFilled[x][y] == filled[x][y]) {
       score += 10;
     }
-  if ((copyFilled[x][y] == 0) && (filled[x][y]!= 0))  {
-      score -= 5;
+    //if they put a color where where should only be white space
+  if ((copyFilled[x][y] != 0) && (filled[x][y]== 0))  {
+      score -= 10;
     }
+    //if they guess a wrong color but correct position
   if ((copyFilled[x][y] != 0) && (filled[x][y]!= 0) && !(copyFilled[x][y] == filled[x][y])){
     score +=5;
   }
-    
+  fill(255);
+  rect(1040, 830, 400, 100);
+  fill(0);
+  text("Score: " + score, 1050, 880);  
 }
 
 void keyPressed() {
