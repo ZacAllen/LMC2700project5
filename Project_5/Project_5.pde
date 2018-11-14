@@ -86,11 +86,11 @@ void copyMode() {
   }
   if (playerSelect) {
     fill(player1color);
-    rect(1100, 500, 100, 100);
+    rect(1100, 400, 100, 100);
     fill(player2color);
-    rect(1100, 650, 100, 100); 
+    rect(1100, 550, 100, 100); 
     fill(player3color);
-    rect(1100, 800, 100, 100); 
+    rect(1100, 700, 100, 100); 
     playerSelect = false;
   }  
 
@@ -169,18 +169,18 @@ void keyPressed() {
 }
 
 void mouseClicked() {
-   if (mouseX >= 1100 && mouseY >= 500 
-     && mouseX <= 1200 && mouseY <= 600) {
+   if (mouseX >= 1100 && mouseY >= 400 
+     && mouseX <= 1200 && mouseY <= 500) {
     player = 1;
     blockColor = player1color;
    }
-   else if (mouseX >= 1100 && mouseY >= 650 
-     && mouseX <= 1200 && mouseY <= 750) {
+   else if (mouseX >= 1100 && mouseY >= 550 
+     && mouseX <= 1200 && mouseY <= 650) {
      player = 2;
      blockColor = player2color;
    }
-   else if (mouseX >= 1100 && mouseY >= 800
-     && mouseX <= 1200 && mouseY <= 900) {
+   else if (mouseX >= 1100 && mouseY >= 700
+     && mouseX <= 1200 && mouseY <= 800) {
        player = 3;
        blockColor = player3color;
    }
