@@ -19,7 +19,7 @@ class Timer{
   }
   
   //update timer by counting down
-  void countDown(){
+  void countDown() {
     Time -= 1/frameRate;
     if (Time < 0){
       Time = 0.0;
