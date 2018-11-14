@@ -1,0 +1,98 @@
+import java.util.ArrayList;
+
+int canvasWidth = 1500;
+int canvasHeight = 1000;
+int gridWidth = 1000;
+int gridHeight = 1000;
+int difficulty = 100;
+
+// Stored colors for each player
+color player1color = #CC0000;
+color player2color = #0000FF;
+color player3color = #77E277;
+
+color blockColor = player1color; // Current drawing color 
+
+int player = 1;
+int [][] filled = new int[gridWidth/difficulty][gridHeight/difficulty];
+
+//var = HomeScreen;
+
+void settings() {
+   size(canvasWidth, canvasHeight); 
+}
+
+void setup() {
+  background(255);
+}
+
+void draw() {
+  for (int i = 0; i < gridWidth; i += difficulty) {
+    line(i, 0, i, gridHeight);
+    line(0, i, gridWidth, i);
+  }
+  line(gridWidth, 0, gridWidth, gridHeight);
+  
+  int mouseConstrainX = difficulty * Math.round(mouseX/difficulty);
+  int mouseConstrainY = difficulty * Math.round(mouseY/difficulty);
+  
+  //control if spot has already been filled
+  try {
+  if (mousePressed && filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] == 0 ) {
+    fill(blockColor);
+    rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
+    filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
+    //perhaps later with the 4th player we can compare their array to this array and calculate points based on that
+  }
+  } catch (Exception e){
+    // Prevents the game from crashing if clicked outside window
+    System.out.println("Array is out of bounds");
+  }
+}
+
+void keyPressed() {
+  if(key == ' ');
+  player++;
+  if(key == 'p');
+  blue();
+  if (player == 2) {
+    //blockColor = #0000FF;
+    blockColor = player2color;
+  }
+  else if (player == 3) {
+    //blockColor = #77E277;
+    blockColor = player3color;
+  }
+}
+
+void blue(){
+clear();
+    
+    fill(#FFFFFF);
+    fill(#75FF50);
+    colorMode(HSB);
+    double sin = sin(millis()/1000.0);
+    double hue = 0; // from 48 to 0, from 360 to 241
+
+    if (sin > 0) {
+      hue = 50.0 * sin;
+    } else {
+      double modifier = abs((float) (120.0 * sin));
+      hue = 360 - modifier;
+      hue = 0; 
+    }
+    fill(color((int)hue,220,220));
+    textAlign(CENTER);
+    textSize(100);
+    text("CopyCat", width/2, height/2 - 160);
+    colorMode(RGB);
+    textSize(14);
+    fill(#46F05B);
+    fill(200);
+    textSize(24);
+    text("Currently sorting photos by time of day \nand generating palettes for all photos. \n When finished, use mouse \n and arrow keys to navigate!",  width/2, height/2 - 100);
+    fill(200);
+    textSize(24);
+    text("Look and see how the colors of the photo change with the time of day.",  width/2, height/2 + 80);
+    textAlign(BASELINE);
+  }

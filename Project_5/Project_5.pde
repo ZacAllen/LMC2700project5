@@ -42,10 +42,14 @@ void draw() {
 void keyPressed() {
   if(key == ' ');
   player++;
+  if(key == 'm');
+  Welcome();
   if (player == 2) {
-    blockColor = #0000FF;
+    //blockColor = #0000FF;
+    //blockColor = player2color;
   }
   else if (player == 3) {
-    blockColor = #77E277;
+    //blockColor = #77E277;
+    //blockColor = player3color;
   }
 }
