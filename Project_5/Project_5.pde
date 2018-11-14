@@ -9,6 +9,7 @@ Timer startTimer;
 PImage logo;
 boolean modeCopy = false;
 int score = 0;
+boolean erased = false;
 
 // Stored colors for each player
 color player1color = #CC0000;
@@ -76,6 +77,11 @@ void makerMode(){
 
 //this is a mode for player 4. right now, the new array is called copyFilled and the default fill is 1 so we can check scorer (doesn't have color variations in grid)
 void copyMode() {
+    if (!erased) { 
+    background(255);
+    erased = true;
+  }
+
   for (int i = 0; i < gridWidth; i += difficulty) {
       line(i, 0, i, gridHeight);
       line(0, i, gridWidth, i);
