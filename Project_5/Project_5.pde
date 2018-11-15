@@ -10,6 +10,7 @@ PImage logo;
 boolean modeCopy = false;
 int score = 0;
 boolean erased = false;
+boolean playerSelect = false;
 
 // Stored colors for each player
 color player1color = #CC0000;
@@ -39,6 +40,7 @@ void setup() {
 }
 
 void draw() {
+  System.out.println("Mouse X: " + mouseX + "Mouse Y: " + mouseY);
   if (modeCopy) {
     copyMode();
   } else {
@@ -77,14 +79,25 @@ void makerMode(){
 
 //this is a mode for player 4. right now, the new array is called copyFilled and the default fill is 1 so we can check scorer (doesn't have color variations in grid)
 void copyMode() {
-    if (!erased) { 
-    background(255);
-    erased = true;
+  if (!erased) { 
+   background(255);
+   erased = true;
+   playerSelect = true;
   }
+  if (playerSelect) {
+    fill(player1color);
+    rect(1100, 500, 100, 100);
+    fill(player2color);
+    rect(1100, 650, 100, 100); 
+    fill(player3color);
+    rect(1100, 800, 100, 100); 
+    playerSelect = false;
+  }  
 
   for (int i = 0; i < gridWidth; i += difficulty) {
       line(i, 0, i, gridHeight);
       line(0, i, gridWidth, i);
+            
     }
   line(gridWidth, 0, gridWidth, gridHeight);
   image(logo, 1100, 100);
@@ -104,7 +117,7 @@ void copyMode() {
     fill(blockColor);
     rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
     //currently only responing to reds, need to add way to have player 4 change colors
-    copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = 1;
+    copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
     int X = mouseConstrainX/difficulty;
     int Y = mouseConstrainY/difficulty;
     scoreUpdate(X, Y);
@@ -149,8 +162,26 @@ void keyPressed() {
   }
   else if (player > 3) {
     //blockColor = #9932CC;
-    blockColor = player4color;
+    blockColor = player1color;
     modeCopy = true;
   }
   
+}
+
+void mouseClicked() {
+   if (mouseX >= 1100 && mouseY >= 500 
+     && mouseX <= 1200 && mouseY <= 600) {
+    player = 1;
+    blockColor = player1color;
+   }
+   else if (mouseX >= 1100 && mouseY >= 650 
+     && mouseX <= 1200 && mouseY <= 750) {
+     player = 2;
+     blockColor = player2color;
+   }
+   else if (mouseX >= 1100 && mouseY >= 800
+     && mouseX <= 1200 && mouseY <= 900) {
+       player = 3;
+       blockColor = player3color;
+   }
 }
