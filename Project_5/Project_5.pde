@@ -156,6 +156,8 @@ void keyPressed() {
     //blockColor = #0000FF;
     blockColor = player2color;
   }
+  if (key == 'w')
+  Welcome();
   else if (player == 3) {
     //blockColor = #77E277;
     blockColor = player3color;
