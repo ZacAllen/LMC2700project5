@@ -126,7 +126,7 @@ void copyMode() {
   fill(255);
   rect(1040, 930, 400, 100);
   fill(#4c072c);
-  text("Time Left: " + nf(startTimer.getTime(), 0, 2) + " seconds", 1050, 980);
+  text("Time Left: " + nf(startTimer.getTime(), 0, 2) + " seconds", 1200, 980);
   
   int mouseConstrainX = difficulty * Math.round(mouseX/difficulty);
   int mouseConstrainY = difficulty * Math.round(mouseY/difficulty);
@@ -164,30 +164,17 @@ void scoreUpdate(int x, int y){
   }
   fill(255);
   rect(1040, 830, 400, 100);
-<<<<<<< HEAD
   fill(#4c072c);
-  text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
-  //fill(#4c072c);
-  //textSize(60);
-  //text("Score: " + score, 1080, 900);  
-
-=======
-  fill(0);
-  text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
-  fill(#4c072c);
-  textSize(60);
-  text("Score: " + score, 1080, 900);  
->>>>>>> d8294a2d003309ed499707ca756a04933763097e
+  text("Score: " + (int)score + " / " + (int)maxScore, 1200, 880);
 }
 
 void keyPressed() {
   if(key == ' ');
   player++;
   if (player == 2) {
-<<<<<<< HEAD
+
     //blockColor = #00bcb5;
-=======
->>>>>>> d8294a2d003309ed499707ca756a04933763097e
+
     blockColor = player2color;
   }
   if (key == 'w')
@@ -195,10 +182,9 @@ void keyPressed() {
   if (key == 'g')
   GameOver();
   else if (player == 3) {
-<<<<<<< HEAD
+
     //blockColor = #b6c399;
-=======
->>>>>>> d8294a2d003309ed499707ca756a04933763097e
+
     blockColor = player3color;
   }
   else if (player > 3) {
