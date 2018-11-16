@@ -4,11 +4,14 @@ int canvasWidth = 1500;
 int canvasHeight = 1000;
 int gridWidth = 1000;
 int gridHeight = 1000;
-int difficulty = 100;
+int difficulty = 200;
 Timer startTimer;
 PImage logo;
 boolean modeCopy = false;
-int score = 0;
+float score = 0;
+float maxScore = gridWidth;
+int filledBlockCount = 0;
+float scoreDivision = 0;
 boolean erased = false;
 boolean playerSelect = false;
 
@@ -18,8 +21,6 @@ color player2color = #0000FF;
 color player3color = #77E277;
 //this can be changed, for testing purposes
 color player4color = #9932CC;
-
-
 color blockColor = player1color; // Current drawing color 
 
 int player = 1;
@@ -69,6 +70,7 @@ void makerMode(){
     fill(blockColor);
     rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
     filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
+    
     //perhaps later with the 4th player we can compare their array to this array and calculate points based on that
   }
   } catch (Exception e) {
@@ -77,7 +79,7 @@ void makerMode(){
   }
 }
 
-//this is a mode for player 4. right now, the new array is called copyFilled and the default fill is 1 so we can check scorer (doesn't have color variations in grid)
+//this is a mode for player 4.
 void copyMode() {
   if (!erased) { 
    background(255);
@@ -133,40 +135,48 @@ void copyMode() {
 void scoreUpdate(int x, int y){
   //if colors are the same
   if (copyFilled[x][y] == filled[x][y]) {
-      score += 10;
+      score += scoreDivision;
     }
     //if they put a color where where should only be white space
   if ((copyFilled[x][y] != 0) && (filled[x][y]== 0))  {
-      score -= 10;
+      score -= scoreDivision;
     }
     //if they guess a wrong color but correct position
   if ((copyFilled[x][y] != 0) && (filled[x][y]!= 0) && !(copyFilled[x][y] == filled[x][y])){
-    score +=5;
+    score += scoreDivision/2;
   }
   fill(255);
   rect(1040, 830, 400, 100);
   fill(0);
-  text("Score: " + score, 1050, 880);  
+  text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
 }
 
 void keyPressed() {
   if(key == ' ');
   player++;
   if (player == 2) {
-    //blockColor = #0000FF;
     blockColor = player2color;
   }
   if (key == 'w')
   Welcome();
   else if (player == 3) {
-    //blockColor = #77E277;
     blockColor = player3color;
   }
   else if (player > 3) {
-    //blockColor = #9932CC;
+    player = 1;
     blockColor = player1color;
     modeCopy = true;
+    for (int i = 0; i < gridWidth/difficulty; i++) {
+      for (int j = 0; j < gridHeight/difficulty; j++) {
+        if (filled[i][j] != 0) {
+          filledBlockCount ++;
+        }
+    }
   }
+  //allow score to increase depending on amount of filled
+  scoreDivision = maxScore/filledBlockCount;
+  
+ }
   
 }
 
