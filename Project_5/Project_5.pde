@@ -15,12 +15,19 @@ float scoreDivision = 0;
 boolean erased = false;
 boolean playerSelect = false;
 
+// Variables for welcome screen
+int s = second();
+int count = 0;
+boolean welcomeScreen = true;
+
 // Stored colors for each player
 color player1color = #ba2644;
 color player2color = #00bcb5;
 color player3color = #b6c399;
-//this can be changed, for testing purposes
+
+// For testing purposes
 color player4color = #9932CC;
+
 color blockColor = player1color; // Current drawing color 
 
 int player = 1;
@@ -41,19 +48,30 @@ void setup() {
 }
 
 void draw() {
-  System.out.println("Mouse X: " + mouseX + "Mouse Y: " + mouseY);
-  if (modeCopy) {
-    copyMode();
+  if (welcomeScreen) {
+    Welcome();
   } else {
-    makerMode();
+  System.out.println("Mouse X: " + mouseX + "Mouse Y: " + mouseY);
+    if (modeCopy) {
+      copyMode();
+    } else {
+      makerMode();
+    }
   }
 }
 
 void makerMode(){
+  // clears the background only once
+  while (count < 1) {
+    background(255);
+    count++;
+  }
+  
   for (int i = 0; i < gridWidth; i += difficulty) {
       line(i, 0, i, gridHeight);
       line(0, i, gridWidth, i);
     }
+    
   line(gridWidth, 0, gridWidth, gridHeight);
   image(logo, 1100, 50);
   textSize(30);
@@ -146,24 +164,17 @@ void scoreUpdate(int x, int y){
   }
   fill(255);
   rect(1040, 830, 400, 100);
-<<<<<<< HEAD
   fill(0);
   text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
-=======
   fill(#4c072c);
   textSize(60);
   text("Score: " + score, 1080, 900);  
->>>>>>> ba2f3d0a87a2619b036bad8b033a2219df3aa1fa
 }
 
 void keyPressed() {
   if(key == ' ');
   player++;
   if (player == 2) {
-<<<<<<< HEAD
-=======
-    //blockColor = #00bcb5;
->>>>>>> ba2f3d0a87a2619b036bad8b033a2219df3aa1fa
     blockColor = player2color;
   }
   if (key == 'w')
@@ -171,10 +182,6 @@ void keyPressed() {
   if (key == 'g')
   GameOver();
   else if (player == 3) {
-<<<<<<< HEAD
-=======
-    //blockColor = #b6c399;
->>>>>>> ba2f3d0a87a2619b036bad8b033a2219df3aa1fa
     blockColor = player3color;
   }
   else if (player > 3) {
@@ -196,6 +203,10 @@ void keyPressed() {
 }
 
 void mouseClicked() {
+  if (welcomeScreen && mouseX >= width/2 - 250 && mouseY >= height - 150 
+    && mouseX <= width/2 + 250 && mouseY <= height - 70) {
+    welcomeScreen = false;
+  }
    if (mouseX >= 1100 && mouseY >= 400 
      && mouseX <= 1200 && mouseY <= 500) {
     player = 1;
