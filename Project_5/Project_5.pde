@@ -163,6 +163,8 @@ void keyPressed() {
   }
   if (key == 'w')
   Welcome();
+  if (key == 'g')
+  GameOver();
   else if (player == 3) {
     //blockColor = #b6c399;
     blockColor = player3color;

@@ -1,0 +1,27 @@
+void GameOver(){
+clear();
+    background(#E6E6FA);
+    fill(#FFFFFF);
+    fill(#75FF50);
+    colorMode(HSB);
+    double sin = sin(millis()/1000.0);
+    double hue = 0; // from 48 to 0, from 360 to 241
+
+    if (sin > 0) {
+      hue = 50.0 * sin;
+    } else {
+      double modifier = abs((float) (120.0 * sin));
+      hue = 360 - modifier;
+      hue = 0; 
+    }
+    fill(color(#EE82EE));
+    textAlign(CENTER);
+    textSize(100);
+    text("Game Over", width/2, height/2 - 160);
+    colorMode(RGB);
+    textSize(14);
+    fill(#46F05B);
+    fill(255);
+    textSize(24);
+    text("Oops, you’ve run out of time. That’s paw-ful. Just kitten. You did\n a great job and should try again. I’m sure you’ll beat your\n previous score", width/2, height/2 + -20)
+ ; }
