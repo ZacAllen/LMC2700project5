@@ -13,9 +13,9 @@ boolean erased = false;
 boolean playerSelect = false;
 
 // Stored colors for each player
-color player1color = #CC0000;
-color player2color = #0000FF;
-color player3color = #77E277;
+color player1color = #ba2644;
+color player2color = #00bcb5;
+color player3color = #b6c399;
 //this can be changed, for testing purposes
 color player4color = #9932CC;
 
@@ -54,7 +54,7 @@ void makerMode(){
       line(0, i, gridWidth, i);
     }
   line(gridWidth, 0, gridWidth, gridHeight);
-  image(logo, 1100, 100);
+  image(logo, 1100, 50);
   textSize(30);
   fill(255);
   rect(1040, 930, 400, 100);
@@ -100,12 +100,12 @@ void copyMode() {
             
     }
   line(gridWidth, 0, gridWidth, gridHeight);
-  image(logo, 1100, 100);
+  image(logo, 1100, 50);
   startTimer.countDown();
   textSize(30);
   fill(255);
   rect(1040, 930, 400, 100);
-  fill(0);
+  fill(#4c072c);
   text("Time Left: " + nf(startTimer.getTime(), 0, 2) + " seconds", 1050, 980);
   
   int mouseConstrainX = difficulty * Math.round(mouseX/difficulty);
@@ -121,7 +121,6 @@ void copyMode() {
     int X = mouseConstrainX/difficulty;
     int Y = mouseConstrainY/difficulty;
     scoreUpdate(X, Y);
-    //perhaps later with the 4th player we can compare their array to this array and calculate points based on that
   }
   } catch (Exception e){
     // Prevents the game from crashing if clicked outside window
@@ -145,21 +144,22 @@ void scoreUpdate(int x, int y){
   }
   fill(255);
   rect(1040, 830, 400, 100);
-  fill(0);
-  text("Score: " + score, 1050, 880);  
+  fill(#4c072c);
+  textSize(60);
+  text("Score: " + score, 1080, 900);  
 }
 
 void keyPressed() {
   if(key == ' ');
   player++;
   if (player == 2) {
-    //blockColor = #0000FF;
+    //blockColor = #00bcb5;
     blockColor = player2color;
   }
   if (key == 'w')
   Welcome();
   else if (player == 3) {
-    //blockColor = #77E277;
+    //blockColor = #b6c399;
     blockColor = player3color;
   }
   else if (player > 3) {
