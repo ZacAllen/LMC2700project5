@@ -146,33 +146,25 @@ void scoreUpdate(int x, int y){
   }
   fill(255);
   rect(1040, 830, 400, 100);
-<<<<<<< HEAD
-  fill(0);
-  text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
-=======
   fill(#4c072c);
-  textSize(60);
-  text("Score: " + score, 1080, 900);  
->>>>>>> ba2f3d0a87a2619b036bad8b033a2219df3aa1fa
+  text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
+  //fill(#4c072c);
+  //textSize(60);
+  //text("Score: " + score, 1080, 900);  
+
 }
 
 void keyPressed() {
   if(key == ' ');
   player++;
   if (player == 2) {
-<<<<<<< HEAD
-=======
     //blockColor = #00bcb5;
->>>>>>> ba2f3d0a87a2619b036bad8b033a2219df3aa1fa
     blockColor = player2color;
   }
   if (key == 'w')
   Welcome();
   else if (player == 3) {
-<<<<<<< HEAD
-=======
     //blockColor = #b6c399;
->>>>>>> ba2f3d0a87a2619b036bad8b033a2219df3aa1fa
     blockColor = player3color;
   }
   else if (player > 3) {
