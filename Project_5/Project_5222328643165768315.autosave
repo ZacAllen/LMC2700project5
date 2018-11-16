@@ -4,23 +4,20 @@ int canvasWidth = 1500;
 int canvasHeight = 1000;
 int gridWidth = 1000;
 int gridHeight = 1000;
-int difficulty = 200;
+int difficulty = 100;
 Timer startTimer;
 PImage logo;
 boolean modeCopy = false;
-float score = 0;
-float maxScore = gridWidth;
-int filledBlockCount = 0;
-float scoreDivision = 0;
-boolean erased = false;
-boolean playerSelect = false;
+int score = 0;
 
 // Stored colors for each player
-color player1color = #ba2644;
-color player2color = #00bcb5;
-color player3color = #b6c399;
+color player1color = #CC0000;
+color player2color = #0000FF;
+color player3color = #77E277;
 //this can be changed, for testing purposes
 color player4color = #9932CC;
+
+
 color blockColor = player1color; // Current drawing color 
 
 int player = 1;
@@ -41,7 +38,6 @@ void setup() {
 }
 
 void draw() {
-  System.out.println("Mouse X: " + mouseX + "Mouse Y: " + mouseY);
   if (modeCopy) {
     copyMode();
   } else {
@@ -55,7 +51,7 @@ void makerMode(){
       line(0, i, gridWidth, i);
     }
   line(gridWidth, 0, gridWidth, gridHeight);
-  image(logo, 1100, 50);
+  image(logo, 1100, 100);
   textSize(30);
   fill(255);
   rect(1040, 930, 400, 100);
@@ -70,7 +66,6 @@ void makerMode(){
     fill(blockColor);
     rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
     filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
-    
     //perhaps later with the 4th player we can compare their array to this array and calculate points based on that
   }
   } catch (Exception e) {
@@ -79,35 +74,19 @@ void makerMode(){
   }
 }
 
-//this is a mode for player 4.
+//this is a mode for player 4. right now, the new array is called copyFilled and the default fill is 1 so we can check scorer (doesn't have color variations in grid)
 void copyMode() {
-  if (!erased) { 
-   background(255);
-   erased = true;
-   playerSelect = true;
-  }
-  if (playerSelect) {
-    fill(player1color);
-    rect(1100, 400, 100, 100);
-    fill(player2color);
-    rect(1100, 550, 100, 100); 
-    fill(player3color);
-    rect(1100, 700, 100, 100); 
-    playerSelect = false;
-  }  
-
   for (int i = 0; i < gridWidth; i += difficulty) {
       line(i, 0, i, gridHeight);
       line(0, i, gridWidth, i);
-            
     }
   line(gridWidth, 0, gridWidth, gridHeight);
-  image(logo, 1100, 50);
+  image(logo, 1100, 100);
   startTimer.countDown();
   textSize(30);
   fill(255);
   rect(1040, 930, 400, 100);
-  fill(#4c072c);
+  fill(0);
   text("Time Left: " + nf(startTimer.getTime(), 0, 2) + " seconds", 1050, 980);
   
   int mouseConstrainX = difficulty * Math.round(mouseX/difficulty);
@@ -119,10 +98,11 @@ void copyMode() {
     fill(blockColor);
     rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
     //currently only responing to reds, need to add way to have player 4 change colors
-    copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
+    copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = 1;
     int X = mouseConstrainX/difficulty;
     int Y = mouseConstrainY/difficulty;
     scoreUpdate(X, Y);
+    //perhaps later with the 4th player we can compare their array to this array and calculate points based on that
   }
   } catch (Exception e){
     // Prevents the game from crashing if clicked outside window
@@ -134,79 +114,38 @@ void copyMode() {
 void scoreUpdate(int x, int y){
   //if colors are the same
   if (copyFilled[x][y] == filled[x][y]) {
-      score += scoreDivision;
+      score += 10;
     }
     //if they put a color where where should only be white space
   if ((copyFilled[x][y] != 0) && (filled[x][y]== 0))  {
-      score -= scoreDivision;
+      score -= 10;
     }
     //if they guess a wrong color but correct position
   if ((copyFilled[x][y] != 0) && (filled[x][y]!= 0) && !(copyFilled[x][y] == filled[x][y])){
-    score += scoreDivision/2;
+    score +=5;
   }
+  textSize(60);
   fill(255);
   rect(1040, 830, 400, 100);
-<<<<<<< HEAD
   fill(0);
-  text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
-=======
-  fill(#4c072c);
-  textSize(60);
-  text("Score: " + score, 1080, 900);  
->>>>>>> ba2f3d0a87a2619b036bad8b033a2219df3aa1fa
+  text("Score: " + score, 1090, 900);  
 }
 
 void keyPressed() {
   if(key == ' ');
   player++;
   if (player == 2) {
-<<<<<<< HEAD
-=======
-    //blockColor = #00bcb5;
->>>>>>> ba2f3d0a87a2619b036bad8b033a2219df3aa1fa
+    //blockColor = #0000FF;
     blockColor = player2color;
   }
-  if (key == 'w')
-  Welcome();
   else if (player == 3) {
-<<<<<<< HEAD
-=======
-    //blockColor = #b6c399;
->>>>>>> ba2f3d0a87a2619b036bad8b033a2219df3aa1fa
+    //blockColor = #77E277;
     blockColor = player3color;
   }
   else if (player > 3) {
-    player = 1;
-    blockColor = player1color;
+    //blockColor = #9932CC;
+    blockColor = player4color;
     modeCopy = true;
-    for (int i = 0; i < gridWidth/difficulty; i++) {
-      for (int j = 0; j < gridHeight/difficulty; j++) {
-        if (filled[i][j] != 0) {
-          filledBlockCount ++;
-        }
-    }
   }
-  //allow score to increase depending on amount of filled
-  scoreDivision = maxScore/filledBlockCount;
   
- }
-  
-}
-
-void mouseClicked() {
-   if (mouseX >= 1100 && mouseY >= 400 
-     && mouseX <= 1200 && mouseY <= 500) {
-    player = 1;
-    blockColor = player1color;
-   }
-   else if (mouseX >= 1100 && mouseY >= 550 
-     && mouseX <= 1200 && mouseY <= 650) {
-     player = 2;
-     blockColor = player2color;
-   }
-   else if (mouseX >= 1100 && mouseY >= 700
-     && mouseX <= 1200 && mouseY <= 800) {
-       player = 3;
-       blockColor = player3color;
-   }
 }
