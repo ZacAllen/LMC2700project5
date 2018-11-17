@@ -164,17 +164,30 @@ void scoreUpdate(int x, int y){
   }
   fill(255);
   rect(1040, 830, 400, 100);
+<<<<<<< HEAD
+  fill(#4c072c);
+  text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
+  //fill(#4c072c);
+  //textSize(60);
+  //text("Score: " + score, 1080, 900);  
+
+=======
   fill(0);
   text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
   fill(#4c072c);
   textSize(60);
   text("Score: " + score, 1080, 900);  
+>>>>>>> d8294a2d003309ed499707ca756a04933763097e
 }
 
 void keyPressed() {
   if(key == ' ');
   player++;
   if (player == 2) {
+<<<<<<< HEAD
+    //blockColor = #00bcb5;
+=======
+>>>>>>> d8294a2d003309ed499707ca756a04933763097e
     blockColor = player2color;
   }
   if (key == 'w')
@@ -184,6 +197,10 @@ void keyPressed() {
   if (key == 'p')
   P4Turn();
   else if (player == 3) {
+<<<<<<< HEAD
+    //blockColor = #b6c399;
+=======
+>>>>>>> d8294a2d003309ed499707ca756a04933763097e
     blockColor = player3color;
   }
   else if (player > 3) {
