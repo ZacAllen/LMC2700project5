@@ -1,4 +1,4 @@
-void GameOver(){
+void P4Turn(){
 clear();
     background(#E6E6FA);
     fill(#FFFFFF);
@@ -17,15 +17,15 @@ clear();
     fill(color(#EE82EE));
     textAlign(CENTER);
     textSize(100);
-    text("Game Over", width/2, height/2 - 160);
+    text("Player 4 Turn", width/2, height/2 - 160);
     fill(color(#EE82EE));
     textAlign(CENTER);
     textSize(40);
-    text("Final Score: " + score, width/2, height/2 - 100);
+    text("Time on the clock: 120 Seconds ", width/2, height/2 - 100);
     colorMode(RGB);
     textSize(14);
     fill(#46F05B);
     fill(255);
     textSize(24);
-    text("Oops, you’ve run out of time. That’s paw-ful. Just kitten. You did\n a great job and should try again. I’m sure you’ll beat your\n previous score", width/2, height/2 + -20)
+    text("Players 1 through 3 have each had their turn. It is now your turn.\n You will have 10 seconds to look at the picture and then\n 120 seconds to replicate the image on your own with the three\n colors used. Good luck and go cat-ch that purrfect score", width/2, height/2 + -20)
  ; }
