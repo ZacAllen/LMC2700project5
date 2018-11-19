@@ -25,6 +25,7 @@ boolean diffSelect = false;
 
 //Player 4 Screen
 boolean p4turn = false;
+int p4stopper = 0;
 
 // Stored colors for each player
 color player1color = #ba2644;
@@ -212,7 +213,11 @@ void keyPressed() {
   }
   //allow score to increase depending on amount of filled
   scoreDivision = maxScore/filledBlockCount;
-  p4turn = true;
+  
+  while(p4stopper < 1) {
+    p4turn = true;
+    p4stopper++;
+  }
   
  }
   
