@@ -58,7 +58,11 @@ void draw() {
     if (diffSelect){
       SelectDifficulty();
     } else if (modeCopy) {
-      copyMode();
+      if (!P4begin) {
+        P4Turn();
+      } else if (P4begin) {
+        copyMode();
+      }
     } else {
       makerMode();
     }
@@ -174,24 +178,22 @@ void scoreUpdate(int x, int y){
 }
 
 void keyPressed() {
-  if(key == ' ');
-  player++;
+  if(key == ' ') {
+    player++;
+  }
   if (player == 2) {
-
-    //blockColor = #00bcb5;
-
     blockColor = player2color;
   }
-  if (key == 'w')
-  Welcome();
-  if (key == 'g')
-  GameOver();
-  if (key == 'd')
-  SelectDifficulty();
+  if (key == 'w') {
+    Welcome();
+  }
+  if (key == 'g') {
+    GameOver();
+  }
+  if (key == 'd') {
+    SelectDifficulty();
+  }
   else if (player == 3) {
-
-    //blockColor = #b6c399;
-
     blockColor = player3color;
   }
   else if (player > 3) {
@@ -207,23 +209,30 @@ void keyPressed() {
   }
   //allow score to increase depending on amount of filled
   scoreDivision = maxScore/filledBlockCount;
-  
  }
-  
 }
 
 void mouseClicked() {
+  // welcome screen button
    if (welcomeScreen && mouseX >= width/2 - 250 && mouseY >= height - 150 
       && mouseX <= width/2 + 250 && mouseY <= height - 70) {
       welcomeScreen = false;
       diffSelect = true;
    }
+   // P4 transition screen button
+   if (!P4begin && mouseX >= width/2 - 250 && mouseY >= height - 150 
+      && mouseX <= width/2 + 250 && mouseY <= height - 70) {
+      P4begin = true;
+   }
+   // Difficulty screen button
    if (diffSelect && mouseX >= 1100 && mouseY >= 800 
       && mouseX <= 1400 && mouseY <= 900) {
      diffSelect = false; 
      filled = new int[gridWidth/difficulty][gridHeight/difficulty];
      copyFilled = new int[gridWidth/difficulty][gridHeight/difficulty];
    }
+   
+   // P4's color select buttons
    if (mouseX >= 1100 && mouseY >= 400 
      && mouseX <= 1200 && mouseY <= 500) {
     player = 1;

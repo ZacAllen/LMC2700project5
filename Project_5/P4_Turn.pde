@@ -1,5 +1,8 @@
+boolean P4begin = false;
+
 void P4Turn(){
-clear();
+  clear();
+  pushStyle();
     background(#E6E6FA);
     fill(#FFFFFF);
     fill(#75FF50);
@@ -27,5 +30,16 @@ clear();
     fill(#46F05B);
     fill(255);
     textSize(24);
-    text("Players 1 through 3 have each had their turn. It is now your turn.\n You will have 10 seconds to look at the picture and then\n 120 seconds to replicate the image on your own with the three\n colors used. Good luck and go cat-ch that purrfect score", width/2, height/2 + -20)
- ; }
+    text("Players 1 through 3 have each had their turn. It is now your turn.\n You will have 10 seconds to look at the picture " + 
+    "and then\n 120 seconds to replicate the image on your own with the three\n colors used. Good luck and go cat-ch that purrfect" +
+    " score", width/2, height/2 + -20);
+    
+    textSize(36);
+    fill(#000000);
+    text("Click Here to Begin", width/2, height - 100);
+    noFill();
+    stroke(#E6E6FA);
+    rect(width/2 - 250, height - 150, 500, 80);
+    
+    popStyle();
+  }
