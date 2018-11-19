@@ -4,7 +4,7 @@ int canvasWidth = 1500;
 int canvasHeight = 1000;
 int gridWidth = 1000;
 int gridHeight = 1000;
-int difficulty = 100;
+int difficulty = 200;
 Timer startTimer;
 PImage logo;
 boolean modeCopy = false;
@@ -20,9 +20,6 @@ int s = second();
 int count = 0;
 boolean welcomeScreen = true;
 
-//Difficulty select
-boolean diffSelect = false;
-
 // Stored colors for each player
 color player1color = #ba2644;
 color player2color = #00bcb5;
@@ -34,8 +31,8 @@ color player4color = #9932CC;
 color blockColor = player1color; // Current drawing color 
 
 int player = 1;
-int [][] filled; 
-int [][] copyFilled;  
+int [][] filled = new int[gridWidth/difficulty][gridHeight/difficulty];
+int [][] copyFilled = new int[gridWidth/difficulty][gridHeight/difficulty];
 
 
 
@@ -55,9 +52,7 @@ void draw() {
     Welcome();
   } else {
   System.out.println("Mouse X: " + mouseX + "Mouse Y: " + mouseY);
-    if (diffSelect){
-      SelectDifficulty();
-    } else if (modeCopy) {
+    if (modeCopy) {
       copyMode();
     } else {
       makerMode();
@@ -186,8 +181,6 @@ void keyPressed() {
   Welcome();
   if (key == 'g')
   GameOver();
-  if (key == 'd')
-  SelectDifficulty();
   else if (player == 3) {
 
     //blockColor = #b6c399;
@@ -213,17 +206,10 @@ void keyPressed() {
 }
 
 void mouseClicked() {
-   if (welcomeScreen && mouseX >= width/2 - 250 && mouseY >= height - 150 
-      && mouseX <= width/2 + 250 && mouseY <= height - 70) {
-      welcomeScreen = false;
-      diffSelect = true;
-   }
-   if (diffSelect && mouseX >= 1100 && mouseY >= 800 
-      && mouseX <= 1400 && mouseY <= 900) {
-     diffSelect = false; 
-     filled = new int[gridWidth/difficulty][gridHeight/difficulty];
-     copyFilled = new int[gridWidth/difficulty][gridHeight/difficulty];
-   }
+  if (welcomeScreen && mouseX >= width/2 - 250 && mouseY >= height - 150 
+    && mouseX <= width/2 + 250 && mouseY <= height - 70) {
+    welcomeScreen = false;
+  }
    if (mouseX >= 1100 && mouseY >= 400 
      && mouseX <= 1200 && mouseY <= 500) {
     player = 1;
