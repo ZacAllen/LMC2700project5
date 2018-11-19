@@ -181,6 +181,8 @@ void keyPressed() {
   Welcome();
   if (key == 'g')
   GameOver();
+  if (key == 'p')
+  P4Turn();
   else if (player == 3) {
 
     //blockColor = #b6c399;
