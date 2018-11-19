@@ -23,6 +23,9 @@ boolean welcomeScreen = true;
 //Difficulty select
 boolean diffSelect = false;
 
+//Player 4 Screen
+boolean p4turn = false;
+
 // Stored colors for each player
 color player1color = #ba2644;
 color player2color = #00bcb5;
@@ -57,6 +60,8 @@ void draw() {
   System.out.println("Mouse X: " + mouseX + "Mouse Y: " + mouseY);
     if (diffSelect){
       SelectDifficulty();
+    } else if (p4turn) {
+      P4Turn();
     } else if (modeCopy) {
       copyMode();
     } else {
@@ -194,7 +199,7 @@ void keyPressed() {
 
     blockColor = player3color;
   }
-  else if (player > 3) {
+  else if (player == 4) {
     player = 1;
     blockColor = player1color;
     modeCopy = true;
@@ -207,6 +212,7 @@ void keyPressed() {
   }
   //allow score to increase depending on amount of filled
   scoreDivision = maxScore/filledBlockCount;
+  p4turn = true;
   
  }
   
@@ -223,6 +229,10 @@ void mouseClicked() {
      diffSelect = false; 
      filled = new int[gridWidth/difficulty][gridHeight/difficulty];
      copyFilled = new int[gridWidth/difficulty][gridHeight/difficulty];
+   }
+   if (p4turn && mouseX >= 650 && mouseX <= 850
+     && mouseY >= 650 && mouseY <= 750) {
+     p4turn = false; 
    }
    if (mouseX >= 1100 && mouseY >= 400 
      && mouseX <= 1200 && mouseY <= 500) {

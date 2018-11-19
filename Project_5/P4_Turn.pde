@@ -6,6 +6,9 @@ clear();
     colorMode(HSB);
     double sin = sin(millis()/1000.0);
     double hue = 0; // from 48 to 0, from 360 to 241
+    
+    fill(255);
+    rect(650, 650, 200, 100);
 
     if (sin > 0) {
       hue = 50.0 * sin;
