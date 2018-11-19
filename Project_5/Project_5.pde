@@ -38,7 +38,6 @@ int [][] filled;
 int [][] copyFilled;  
 
 
-
 void settings() {
    size(canvasWidth, canvasHeight); 
 }
@@ -58,11 +57,7 @@ void draw() {
     if (diffSelect){
       SelectDifficulty();
     } else if (modeCopy) {
-      if (!P4begin) {
-        P4Turn();
-      } else if (P4begin) {
-        copyMode();
-      }
+      copyMode();
     } else {
       makerMode();
     }
@@ -104,10 +99,17 @@ void makerMode(){
     // Prevents the game from crashing if clicked outside window
     System.out.println("Array is out of bounds");
   }
+  
+  if (transitions) {
+    transitionsBox();
+  }
 }
 
 //this is a mode for player 4.
 void copyMode() {
+  if (!P4begin) {
+    P4Turn();
+  } else {
   if (!erased) { 
    background(255);
    erased = true;
@@ -155,6 +157,7 @@ void copyMode() {
     // Prevents the game from crashing if clicked outside window
     System.out.println("Array is out of bounds");
   }
+  }
 }
 
 
@@ -178,6 +181,15 @@ void scoreUpdate(int x, int y){
 }
 
 void keyPressed() {
+  // debugging
+  if (key == 't') {
+    if (transitions) {
+      transitions = false;
+    } else {
+      transitions = true;
+    }
+  }
+
   if(key == ' ') {
     player++;
   }
@@ -220,7 +232,7 @@ void mouseClicked() {
       diffSelect = true;
    }
    // P4 transition screen button
-   if (!P4begin && mouseX >= width/2 - 250 && mouseY >= height - 150 
+   if (!P4begin && P4SplashScreen && mouseX >= width/2 - 250 && mouseY >= height - 150 
       && mouseX <= width/2 + 250 && mouseY <= height - 70) {
       P4begin = true;
    }
