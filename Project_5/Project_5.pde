@@ -1,3 +1,4 @@
+PFont ourFont;
 import java.util.ArrayList;
 
 int canvasWidth = 1500;
@@ -48,6 +49,8 @@ void setup() {
   startTimer = new Timer(120);
   logo = loadImage("logo.jpg");
   logo.resize(300, 300);
+  ourFont = createFont("Snap ITC", 24);
+  textFont(ourFont);
 }
 
 void draw() {
