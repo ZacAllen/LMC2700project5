@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 import java.util.ArrayList;
 
 int canvasWidth = 1500;
@@ -48,6 +50,7 @@ void settings() {
 }
 
 void setup() {
+  PlayMusic();
   background(255);
   startTimer = new Timer(120);
   logo = loadImage("logo.jpg");
@@ -55,6 +58,7 @@ void setup() {
 }
 
 void draw() {
+
   if (welcomeScreen) {
     Welcome();
   } else {
@@ -184,7 +188,7 @@ void scoreUpdate(int x, int y){
 }
 
 void keyPressed() {
-  if(key == ' ') {
+  if(key == ' ' && !welcomeScreen && !diffSelect) {
     player++;
   }
   if (player == 2) {
@@ -215,15 +219,15 @@ void keyPressed() {
   }
   //allow score to increase depending on amount of filled
   scoreDivision = maxScore/filledBlockCount;
-<<<<<<< HEAD
+
   
   while(p4stopper < 1) {
     p4turn = true;
     p4stopper++;
   }
   
-=======
->>>>>>> 97ffadd0a9864f6ab9f15cfdbfb2a1e9f816285f
+
+
  }
 }
 
@@ -246,15 +250,15 @@ void mouseClicked() {
      filled = new int[gridWidth/difficulty][gridHeight/difficulty];
      copyFilled = new int[gridWidth/difficulty][gridHeight/difficulty];
    }
-<<<<<<< HEAD
+
    if (p4turn && mouseX >= 650 && mouseX <= 850
      && mouseY >= 650 && mouseY <= 750) {
      p4turn = false; 
    }
-=======
+
    
    // P4's color select buttons
->>>>>>> 97ffadd0a9864f6ab9f15cfdbfb2a1e9f816285f
+
    if (mouseX >= 1100 && mouseY >= 400 
      && mouseX <= 1200 && mouseY <= 500) {
     player = 1;
