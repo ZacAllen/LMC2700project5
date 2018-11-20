@@ -55,5 +55,6 @@ void P4Turn(){
   
 // transition screens for players 1-3
 void transitionsBox() {
-  rect(width/2 - 100, width/2 + 100, height/2 - 100, height/2 + 100);
+  fill(#E6E6FA);
+  rect(width/2 - 375, height/2 - 250, 750, 500);
 }
