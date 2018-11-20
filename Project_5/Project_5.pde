@@ -136,7 +136,7 @@ void copyMode() {
   line(gridWidth, 0, gridWidth, gridHeight);
   image(logo, 1100, 50);
   startTimer.countDown();
-  textSize(30);
+  textSize(24);
   fill(255);
   rect(1040, 930, 400, 100);
   fill(#4c072c);
