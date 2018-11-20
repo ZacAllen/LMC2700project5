@@ -41,8 +41,8 @@ void SelectDifficulty() {
     rect(1100, 800, 400, 100);
     pushMatrix();
     fill(255);
-    textSize(30);
-    text("PLAY GAME", 1300, 850);
+    textSize(50);
+    text("PLAY GAME", 1300, 860);
     popMatrix();
     
 

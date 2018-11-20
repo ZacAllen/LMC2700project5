@@ -8,6 +8,9 @@ int gridHeight = 1000;
 int difficulty = 100;
 Timer startTimer;
 PImage logo;
+PImage color1button;
+PImage color2button;
+PImage color3button;
 boolean modeCopy = false;
 float score = 0;
 float maxScore = gridWidth;
@@ -118,13 +121,16 @@ void copyMode() {
    erased = true;
    playerSelect = true;
   }
+  color1button = loadImage("pink_paw.jpg");
+  color1button.resize(100, 100);
+  color2button = loadImage("blue_paw.jpg");
+  color2button.resize(100, 100);
+  color3button = loadImage("green_paw.jpg");
+  color3button.resize(100, 100);
   if (playerSelect) {
-    fill(player1color);
-    rect(1100, 400, 100, 100);
-    fill(player2color);
-    rect(1100, 550, 100, 100); 
-    fill(player3color);
-    rect(1100, 700, 100, 100); 
+    image(color1button, 1100, 400);
+    image(color2button, 1100, 550);
+    image(color3button, 1100, 700); 
     playerSelect = false;
   }  
 
