@@ -211,15 +211,6 @@ void keyPressed() {
   if (player == 2) {
     blockColor = player2color;
   }
-  if (key == 'w') {
-    Welcome();
-  }
-  if (key == 'g') {
-    GameOver();
-  }
-  if (key == 'd') {
-    SelectDifficulty();
-  }
   else if (player == 3) {
     blockColor = player3color;
   }
