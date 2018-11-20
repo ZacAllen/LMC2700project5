@@ -1,11 +1,12 @@
-<<<<<<< HEAD
+
 import processing.sound.*;
 
-=======
-PFont ourFont;
->>>>>>> c840e3360062f753e75a4efaed10c8d8e3cd84ba
-import java.util.ArrayList;
 
+PFont ourFont;
+
+import java.util.ArrayList;
+int musicCounter = 0;
+int musicCounter2 = 0;
 int canvasWidth = 1500;
 int canvasHeight = 1000;
 int gridWidth = 1000;
@@ -47,13 +48,16 @@ int player = 1;
 int [][] filled; 
 int [][] copyFilled;  
 
+SoundFile neko;
+SoundFile nekofast;
 
 void settings() {
    size(canvasWidth, canvasHeight); 
 }
 
 void setup() {
-  PlayMusic();
+  neko = new SoundFile(this, "NekoAtsume.wav");
+  nekofast = new SoundFile(this, "NekoAtsumeFast.wav");
   background(255);
   startTimer = new Timer(120);
   logo = loadImage("logo.jpg");
@@ -63,6 +67,10 @@ void setup() {
 }
 
 void draw() {
+  if (musicCounter < 1) {
+   neko.loop(); 
+   musicCounter++;
+  }
 
   if (welcomeScreen) {
     Welcome();
@@ -71,6 +79,11 @@ void draw() {
     if (diffSelect){
       SelectDifficulty();
     } else if (p4turn) {
+        neko.stop(); //run function again so it sees stopMusic
+       if (musicCounter2 < 1) {
+         nekofast.loop();
+         musicCounter2++;  
+       }
       P4Turn();
     } else if (modeCopy) {
       copyMode();
@@ -197,9 +210,9 @@ void scoreUpdate(int x, int y){
 }
 
 void keyPressed() {
-<<<<<<< HEAD
+
   if(key == ' ' && !welcomeScreen && !diffSelect) {
-=======
+
   // debugging
   if (key == 't') {
     if (transitions) {
@@ -210,7 +223,7 @@ void keyPressed() {
   }
 
   if(key == ' ') {
->>>>>>> c840e3360062f753e75a4efaed10c8d8e3cd84ba
+
     player++;
   }
   if (player == 2) {
@@ -250,7 +263,8 @@ void keyPressed() {
   
 
 
- }
+   }
+  }
 }
 
 void mouseClicked() {
@@ -296,4 +310,5 @@ void mouseClicked() {
        player = 3;
        blockColor = player3color;
    }
+
 }
