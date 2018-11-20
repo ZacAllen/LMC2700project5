@@ -53,6 +53,12 @@ void setup() {
   logo.resize(300, 300);
   ourFont = createFont("Snap ITC", 24);
   textFont(ourFont);
+  color1button = loadImage("pink_paw.jpg");
+  color1button.resize(100, 100);
+  color2button = loadImage("blue_paw.jpg");
+  color2button.resize(100, 100);
+  color3button = loadImage("green_paw.jpg");
+  color3button.resize(100, 100);
 }
 
 void draw() {
@@ -121,12 +127,6 @@ void copyMode() {
    erased = true;
    playerSelect = true;
   }
-  color1button = loadImage("pink_paw.jpg");
-  color1button.resize(100, 100);
-  color2button = loadImage("blue_paw.jpg");
-  color2button.resize(100, 100);
-  color3button = loadImage("green_paw.jpg");
-  color3button.resize(100, 100);
   if (playerSelect) {
     image(color1button, 1100, 400);
     image(color2button, 1100, 550);
