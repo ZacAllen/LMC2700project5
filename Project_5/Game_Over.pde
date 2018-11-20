@@ -1,6 +1,6 @@
 void GameOver(){
 clear();
-    background(#E6E6FA);
+    background(#ffcecc);
     fill(#FFFFFF);
     fill(#75FF50);
     colorMode(HSB);
@@ -14,11 +14,11 @@ clear();
       hue = 360 - modifier;
       hue = 0; 
     }
-    fill(color(#EE82EE));
+    fill(color(#ba2644));
     textAlign(CENTER);
     textSize(100);
     text("Game Over", width/2, height/2 - 160);
-    fill(color(#EE82EE));
+    fill(color(#00bcb5));
     textAlign(CENTER);
     textSize(40);
     text("Final Score: " + score, width/2, height/2 - 100);
@@ -27,5 +27,5 @@ clear();
     fill(#46F05B);
     fill(255);
     textSize(24);
-    text("Oops, you’ve run out of time. That’s paw-ful. Just kitten. You did\n a great job and should try again. I’m sure you’ll beat your\n previous score", width/2, height/2 + -20)
+    text("Oops, you’ve run out of time. That’s paw-ful. Just kitten! You did\n a great job and should try again. I’m sure you’ll beat your\n previous score", width/2, height/2 + -20)
  ; }

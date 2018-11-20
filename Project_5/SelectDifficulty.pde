@@ -1,12 +1,12 @@
 boolean selected = false;
 int barWidth = 0;
-color barColor = #A4485B;
+color barColor = #ba2644;
 
 void SelectDifficulty() {
     clear();
-    background(#E6E6FA);
+    background(#00bcb5);
     
-    fill(barColor);
+    fill(225);
     textAlign(CENTER);
     textSize(80);
     text("Choose your difficulty!", width/2, height/4);
@@ -37,12 +37,13 @@ void SelectDifficulty() {
     text("ImPAWsible", 1150, 500);
     text("400 Squares", 1150, 700);
     
+    fill(barColor);
     //Probably replace with an actual image later
     rect(1100, 800, 400, 100);
     pushMatrix();
     fill(255);
-    textSize(30);
-    text("PLAY GAME", 1300, 850);
+    textSize(50);
+    text("PLAY GAME", 1300, 860);
     popMatrix();
     
 

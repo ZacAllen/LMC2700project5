@@ -14,6 +14,9 @@ int gridHeight = 1000;
 int difficulty = 100;
 Timer startTimer;
 PImage logo;
+PImage color1button;
+PImage color2button;
+PImage color3button;
 boolean modeCopy = false;
 float score = 0;
 float maxScore = gridWidth;
@@ -64,6 +67,12 @@ void setup() {
   logo.resize(300, 300);
   ourFont = createFont("Snap ITC", 24);
   textFont(ourFont);
+  color1button = loadImage("pink_paw.jpg");
+  color1button.resize(100, 100);
+  color2button = loadImage("blue_paw.jpg");
+  color2button.resize(100, 100);
+  color3button = loadImage("green_paw.jpg");
+  color3button.resize(100, 100);
 }
 
 void draw() {
@@ -145,12 +154,9 @@ void copyMode() {
    playerSelect = true;
   }
   if (playerSelect) {
-    fill(player1color);
-    rect(1100, 400, 100, 100);
-    fill(player2color);
-    rect(1100, 550, 100, 100); 
-    fill(player3color);
-    rect(1100, 700, 100, 100); 
+    image(color1button, 1100, 400);
+    image(color2button, 1100, 550);
+    image(color3button, 1100, 700); 
     playerSelect = false;
   }  
 
@@ -162,12 +168,15 @@ void copyMode() {
   line(gridWidth, 0, gridWidth, gridHeight);
   image(logo, 1100, 50);
   startTimer.countDown();
-  textSize(30);
+  pushStyle();
+  textAlign(LEFT);
+  textSize(24);
   fill(255);
   rect(1040, 930, 400, 100);
   fill(#4c072c);
-  text("Time Left: " + nf(startTimer.getTime(), 0, 2) + " seconds", 1240, 980);
+  text("Time Left: " + nf(startTimer.getTime(), 0, 2) + " seconds", 1050, 980);
   
+  popStyle();
   int mouseConstrainX = difficulty * Math.round(mouseX/difficulty);
   int mouseConstrainY = difficulty * Math.round(mouseY/difficulty);
   
@@ -203,10 +212,13 @@ void scoreUpdate(int x, int y){
   if ((copyFilled[x][y] != 0) && (filled[x][y]!= 0) && !(copyFilled[x][y] == filled[x][y])){
     score += scoreDivision/2;
   }
+  pushStyle();
+  textAlign(LEFT);
   fill(255);
   rect(1040, 830, 400, 100);
   fill(#4c072c);
-  text("Score: " + (int)score + " / " + (int)maxScore, 1200, 880);
+  text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
+  popStyle();
 }
 
 void keyPressed() {
@@ -228,15 +240,6 @@ void keyPressed() {
   }
   if (player == 2) {
     blockColor = player2color;
-  }
-  if (key == 'w') {
-    Welcome();
-  }
-  if (key == 'g') {
-    GameOver();
-  }
-  if (key == 'd') {
-    SelectDifficulty();
   }
   else if (player == 3) {
     blockColor = player3color;
