@@ -142,12 +142,15 @@ void copyMode() {
   line(gridWidth, 0, gridWidth, gridHeight);
   image(logo, 1100, 50);
   startTimer.countDown();
+  pushStyle();
+  textAlign(LEFT);
   textSize(24);
   fill(255);
   rect(1040, 930, 400, 100);
   fill(#4c072c);
-  text("Time Left: " + nf(startTimer.getTime(), 0, 2) + " seconds", 1240, 980);
+  text("Time Left: " + nf(startTimer.getTime(), 0, 2) + " seconds", 1050, 980);
   
+  popStyle();
   int mouseConstrainX = difficulty * Math.round(mouseX/difficulty);
   int mouseConstrainY = difficulty * Math.round(mouseY/difficulty);
   
@@ -183,10 +186,13 @@ void scoreUpdate(int x, int y){
   if ((copyFilled[x][y] != 0) && (filled[x][y]!= 0) && !(copyFilled[x][y] == filled[x][y])){
     score += scoreDivision/2;
   }
+  pushStyle();
+  textAlign(LEFT);
   fill(255);
   rect(1040, 830, 400, 100);
   fill(#4c072c);
-  text("Score: " + (int)score + " / " + (int)maxScore, 1200, 880);
+  text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
+  popStyle();
 }
 
 void keyPressed() {

@@ -11,9 +11,8 @@ void P4Turn(){
   clear();
   P4SplashScreen = true;
   pushStyle();
-    background(#E6E6FA);
-    fill(#FFFFFF);
-    fill(#75FF50);
+    background(#ffcecc);
+    fill(#ba2644);
     colorMode(HSB);
     double sin = sin(millis()/1000.0);
     double hue = 0; // from 48 to 0, from 360 to 241
@@ -25,11 +24,11 @@ void P4Turn(){
       hue = 360 - modifier;
       hue = 0; 
     }
-    fill(color(#EE82EE));
+    fill(color(#ba2644));
     textAlign(CENTER);
     textSize(100);
     text("Player 4 Turn", width/2, height/2 - 160);
-    fill(color(#EE82EE));
+    fill(color(#ba2644));
     textAlign(CENTER);
     textSize(40);
     text("Time on the clock: 120 Seconds ", width/2, height/2 - 100);
@@ -43,7 +42,7 @@ void P4Turn(){
     " score", width/2, height/2 + -20);
     
     textSize(36);
-    fill(#000000);
+    fill(#4c072c);
     text("Click Here to Begin", width/2, height - 100);
     noFill();
     stroke(#E6E6FA);

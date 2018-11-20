@@ -1,6 +1,6 @@
 void Welcome(){
 clear();
-    background(#E6E6FA);
+    background(#ffcecc);
     fill(#FFFFFF);
     fill(#75FF50);
     colorMode(HSB);
@@ -14,7 +14,7 @@ clear();
       hue = 360 - modifier;
       hue = 0; 
     }
-    fill(color(#EE82EE));
+    fill(color(#ba2644));
     textAlign(CENTER);
     textSize(100);
     text("CopyCat", width/2, height/2 - 160);
@@ -32,7 +32,7 @@ clear();
     // Delayed pop-up of start button. Currently waits 2 seconds, we could change that number to be longer if we want
     if (second() > s + 2) {
       textSize(36);
-      fill(#000000);
+      fill(#4c072c);
       text("Click Here to Begin", width/2, height - 100);
       noFill();
       stroke(#E6E6FA);
