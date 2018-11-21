@@ -290,8 +290,8 @@ void mouseClicked() {
      copyFilled = new int[gridWidth/difficulty][gridHeight/difficulty];
    }
 
-   if (p4turn && mouseX >= 650 && mouseX <= 850
-     && mouseY >= 650 && mouseY <= 750) {
+   if (p4turn && mouseX >= 500 && mouseX <= 1000
+     && mouseY >= 800 && mouseY <= 900) {
      p4turn = false; 
    }
 
