@@ -67,7 +67,7 @@ void setup() {
   neko = new SoundFile(this, "NekoAtsume.wav");
   nekofast = new SoundFile(this, "NekoAtsumeFast.wav");
   background(255);
-  startTimer = new Timer(120);
+  startTimer = new Timer(45);
   logo = loadImage("logo.jpg");
   logo.resize(300, 300);
   ourFont = createFont("Snap ITC", 24);
@@ -122,7 +122,7 @@ void makerMode(){
     }
     
   line(gridWidth, 0, gridWidth, gridHeight);
-  image(logo, 1100, 50);
+  image(logo, 1070, 50);
   textSize(30);
   fill(255);
   rect(1040, 930, 400, 100);
@@ -161,6 +161,7 @@ void copyMode() {
    playerSelect = true;
   }
   if (playerSelect) {
+    image(logo, 1070, 50);
     image(color1button, 1100, 400);
     image(color2button, 1100, 550);
     image(color3button, 1250, 400);
@@ -170,9 +171,12 @@ void copyMode() {
     fill(255);
     rect(1040, 830, 400, 100);
     rect(1040, 730, 400, 100);
+    rect(1040, 660, 400, 70);
     fill(#4c072c);
     text("Score: " + 0 + " / " + (int)maxScore, 1050, 880);
     text("Lives left: " + 9 + " / 9", 1050, 780);
+    textSize(60);
+    text("STOP", 1140, 715);
     popStyle();
     
     playerSelect = false;
@@ -184,7 +188,6 @@ void copyMode() {
             
     }
   line(gridWidth, 0, gridWidth, gridHeight);
-  image(logo, 1100, 50);
   startTimer.countDown();
   pushStyle();
   textAlign(LEFT);
@@ -358,6 +361,12 @@ void mouseClicked() {
      && mouseY >= 800 && mouseY <= 900) {
      p4turn = false; 
    }
+   
+   if (P4begin && mouseX >= 1040 && mouseX <= 1440
+     && mouseY >= 660 && mouseY <= 730) {
+       GameOver();
+       startTimer.setTime(0.00);
+    }
 
    
    // P4's color select buttons

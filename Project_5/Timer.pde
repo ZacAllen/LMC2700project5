@@ -23,6 +23,7 @@ class Timer{
     Time -= 1/frameRate;
     if (Time < 0){
       Time = 0.0;
+      GameOver();
     }
   }
   
