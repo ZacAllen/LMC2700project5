@@ -17,6 +17,7 @@ PImage logo;
 PImage color1button;
 PImage color2button;
 PImage color3button;
+PImage eraserbutton;
 boolean modeCopy = false;
 float score = 0;
 float maxScore = gridWidth;
@@ -24,6 +25,9 @@ int filledBlockCount = 0;
 float scoreDivision = 0;
 boolean erased = false;
 boolean playerSelect = false;
+int lives = 9;
+boolean alive = true;
+int oldColor;
 
 // Variables for welcome screen
 int s = second();
@@ -41,6 +45,7 @@ int p4stopper = 0;
 color player1color = #ba2644;
 color player2color = #00bcb5;
 color player3color = #b6c399;
+color erasercolor = 255;
 
 // For testing purposes
 color player4color = #9932CC;
@@ -73,6 +78,8 @@ void setup() {
   color2button.resize(100, 100);
   color3button = loadImage("green_paw.jpg");
   color3button.resize(100, 100);
+  eraserbutton = loadImage("eraser.png");
+  eraserbutton.resize(100, 100);
 }
 
 void draw() {
@@ -156,7 +163,18 @@ void copyMode() {
   if (playerSelect) {
     image(color1button, 1100, 400);
     image(color2button, 1100, 550);
-    image(color3button, 1100, 700); 
+    image(color3button, 1250, 400);
+    image(eraserbutton, 1250, 550);
+    pushStyle();
+    textAlign(LEFT);
+    fill(255);
+    rect(1040, 830, 400, 100);
+    rect(1040, 730, 400, 100);
+    fill(#4c072c);
+    text("Score: " + 0 + " / " + (int)maxScore, 1050, 880);
+    text("Lives left: " + 9 + " / 9", 1050, 780);
+    popStyle();
+    
     playerSelect = false;
   }  
 
@@ -182,7 +200,7 @@ void copyMode() {
   
   //control if spot has already been filled
   try {
-  if (mousePressed && copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] == 0 ) {
+  if (mousePressed && player > 0 && copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] == 0 ) {
     fill(blockColor);
     rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
     //currently only responing to reds, need to add way to have player 4 change colors
@@ -190,14 +208,38 @@ void copyMode() {
     int X = mouseConstrainX/difficulty;
     int Y = mouseConstrainY/difficulty;
     scoreUpdate(X, Y);
+  } else if(mousePressed && player == 0 && alive && copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] > 0){
+    oldColor = copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty];
+    fill(blockColor);
+    rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
+    copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
+    if (player == 0) {
+      livesUpdate();
+    }
+    int X = mouseConstrainX/difficulty;
+    int Y = mouseConstrainY/difficulty;
+    scoreUpdateEraser(X, Y, oldColor);
   }
-  } catch (Exception e){
+  }catch (Exception e){
     // Prevents the game from crashing if clicked outside window
     System.out.println("Array is out of bounds");
   }
   }
 }
 
+void livesUpdate(){
+  lives--;
+  pushStyle();
+  textAlign(LEFT);
+  fill(255);
+  rect(1040, 730, 400, 100);
+  fill(#4c072c);
+  text("Lives left: " + lives + " / 9", 1050, 780);
+  popStyle();
+  if (lives <= 0) {
+    alive = false;
+  }
+}
 
 void scoreUpdate(int x, int y){
   //if colors are the same
@@ -211,6 +253,28 @@ void scoreUpdate(int x, int y){
     //if they guess a wrong color but correct position
   if ((copyFilled[x][y] != 0) && (filled[x][y]!= 0) && !(copyFilled[x][y] == filled[x][y])){
     score += scoreDivision/2;
+  }
+  pushStyle();
+  textAlign(LEFT);
+  fill(255);
+  rect(1040, 830, 400, 100);
+  fill(#4c072c);
+  text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
+  popStyle();
+}
+
+void scoreUpdateEraser(int x, int y, int oldColor) {
+  //if the old color was correct
+  if (filled[x][y] == oldColor) {
+    score -= scoreDivision;
+  }
+  //if the old color was wrong but placement was right
+  if (filled[x][y] != oldColor && filled[x][y] != 0) {
+    score -= scoreDivision/2;
+  }
+  //if the old color and placement was wrong and it was supposed to be white space
+  if (filled[x][y] == 0){
+    score += scoreDivision;
   }
   pushStyle();
   textAlign(LEFT);
@@ -308,10 +372,17 @@ void mouseClicked() {
      player = 2;
      blockColor = player2color;
    }
-   else if (mouseX >= 1100 && mouseY >= 700
-     && mouseX <= 1200 && mouseY <= 800) {
+   else if (mouseX >= 1250 && mouseY >= 400
+     && mouseX <= 1350 && mouseY <= 500) {
        player = 3;
        blockColor = player3color;
+   }
+   else if (mouseX >= 1250 && mouseY >= 550
+     && mouseX <= 1350 && mouseY <= 650) {
+       if (alive) {
+         player = 0;
+         blockColor = erasercolor;
+       }
    }
 
 }
