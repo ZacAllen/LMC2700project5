@@ -1,6 +1,4 @@
-
 import processing.sound.*;
-
 
 PFont ourFont;
 
@@ -90,7 +88,14 @@ void draw() {
 
   if (welcomeScreen) {
     Welcome();
-  } else {
+  } 
+  // debugging ONLY /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  else if (compare) {
+    previewScreen();
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+  else {
   System.out.println("Mouse X: " + mouseX + "Mouse Y: " + mouseY);
     if (diffSelect){
       SelectDifficulty();
@@ -119,7 +124,7 @@ void makerMode(){
   for (int i = 0; i < gridWidth; i += difficulty) {
       line(i, 0, i, gridHeight);
       line(0, i, gridWidth, i);
-    }
+  }
     
   line(gridWidth, 0, gridWidth, gridHeight);
   image(logo, 1070, 50);
@@ -133,13 +138,11 @@ void makerMode(){
   
   //control if spot has already been filled
   try {
-  if (mousePressed && filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] == 0 ) {
-    fill(blockColor);
-    rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
-    filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
-    
-    //perhaps later with the 4th player we can compare their array to this array and calculate points based on that
-  }
+    if (mousePressed && filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] == 0 ) {
+      fill(blockColor);
+      rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
+      filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
+    }
   } catch (Exception e) {
     // Prevents the game from crashing if clicked outside window
     System.out.println("Array is out of bounds");
@@ -203,27 +206,28 @@ void copyMode() {
   
   //control if spot has already been filled
   try {
-  if (mousePressed && player > 0 && copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] == 0 ) {
-    fill(blockColor);
-    rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
-    //currently only responing to reds, need to add way to have player 4 change colors
-    copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
-    int X = mouseConstrainX/difficulty;
-    int Y = mouseConstrainY/difficulty;
-    scoreUpdate(X, Y);
-  } else if(mousePressed && player == 0 && alive && copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] > 0){
-    oldColor = copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty];
-    fill(blockColor);
-    rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
-    copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
-    if (player == 0) {
-      livesUpdate();
+    if (mousePressed && player > 0 && copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] == 0 ) {
+      fill(blockColor);
+      rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
+      //currently only responing to reds, need to add way to have player 4 change colors
+      copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
+      int X = mouseConstrainX/difficulty;
+      int Y = mouseConstrainY/difficulty;
+      scoreUpdate(X, Y);
+    } 
+    else if(mousePressed && player == 0 && alive && copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] > 0){
+      oldColor = copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty];
+      fill(blockColor);
+      rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
+      copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
+      if (player == 0) {
+        livesUpdate();
+      }
+      int X = mouseConstrainX/difficulty;
+      int Y = mouseConstrainY/difficulty;
+      scoreUpdateEraser(X, Y, oldColor);
     }
-    int X = mouseConstrainX/difficulty;
-    int Y = mouseConstrainY/difficulty;
-    scoreUpdateEraser(X, Y, oldColor);
-  }
-  }catch (Exception e){
+  } catch (Exception e){
     // Prevents the game from crashing if clicked outside window
     System.out.println("Array is out of bounds");
   }
@@ -289,9 +293,7 @@ void scoreUpdateEraser(int x, int y, int oldColor) {
 }
 
 void keyPressed() {
-
-  if(key == ' ' && !welcomeScreen && !diffSelect) {
-
+  //if(key == ' ' && !welcomeScreen && !diffSelect) {
   // debugging
   if (key == 't') {
     if (transitions) {
@@ -300,11 +302,21 @@ void keyPressed() {
       transitions = true;
     }
   }
+  
+  // debugging ONLY /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  if (key == ENTER) {
+    if (compare) {
+      compare = false;
+    } else {
+      compare = true;
+    }
+  }
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   if(key == ' ') {
-
     player++;
   }
+  
   if (player == 2) {
     blockColor = player2color;
   }
@@ -320,21 +332,17 @@ void keyPressed() {
         if (filled[i][j] != 0) {
           filledBlockCount ++;
         }
+      }
+    }
+    //allow score to increase depending on amount of filled
+    scoreDivision = maxScore/filledBlockCount;
+  
+    while(p4stopper < 1) {
+      p4turn = true;
+      p4stopper++;
     }
   }
-  //allow score to increase depending on amount of filled
-  scoreDivision = maxScore/filledBlockCount;
-
-  
-  while(p4stopper < 1) {
-    p4turn = true;
-    p4stopper++;
-  }
-  
-
-
-   }
-  }
+  //}
 }
 
 void mouseClicked() {
@@ -353,8 +361,15 @@ void mouseClicked() {
    if (diffSelect && mouseX >= 1100 && mouseY >= 800 
       && mouseX <= 1400 && mouseY <= 900) {
      diffSelect = false; 
+     
+     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     
+     
      filled = new int[gridWidth/difficulty][gridHeight/difficulty];
      copyFilled = new int[gridWidth/difficulty][gridHeight/difficulty];
+     
+     
+     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    }
 
    if (p4turn && mouseX >= 500 && mouseX <= 1000

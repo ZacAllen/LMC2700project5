@@ -40,5 +40,4 @@ clear();
       rect(width/2 - 250, height - 150, 500, 80);
     }
     popStyle();
-
  ; }
