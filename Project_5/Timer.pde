@@ -2,6 +2,7 @@ class Timer{
   float Time;
   float Min;
   float Sec;
+  boolean copySaved = false;
   
   //constructor
   Timer(float set){

@@ -16,8 +16,9 @@ clear();
     }
     fill(color(#ba2644));
     textAlign(CENTER);
+    image(welcomeCat, width/2 - 125, height/2 - 290);
     textSize(100);
-    text("CopyCat", width/2, height/2 - 160);
+    text("CopyCat", width/2, height/2 - 320);
     colorMode(RGB);
     textSize(14);
     fill(#46F05B);

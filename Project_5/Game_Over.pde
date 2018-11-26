@@ -1,5 +1,5 @@
 void GameOver(){
-clear();
+    clear();
     background(#ffcecc);
     fill(#FFFFFF);
     fill(#75FF50);
@@ -27,5 +27,5 @@ clear();
     fill(#46F05B);
     fill(255);
     textSize(24);
-    text("Oops, looks like time's up! That’s paw-ful. Just kitten! You did\n a great job and should try again. I’m sure you’ll beat your\n previous score.", width/2, height/2 + -20)
- ; }
+    text("Oops, looks like time's up! That’s paw-ful. Just kitten! You did\n a great job and should try again. I’m sure you’ll beat your\n previous score.", width/2, height/2 + -20);
+ }
