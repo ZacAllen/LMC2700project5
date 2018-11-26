@@ -1,6 +1,8 @@
 boolean selected = false;
 int barWidth = 0;
 color barColor = #ba2644;
+String level = "Default";
+
 
 void SelectDifficulty() {
     clear();
@@ -43,7 +45,7 @@ void SelectDifficulty() {
     pushMatrix();
     fill(255);
     textSize(50);
-    text("PLAY GAME", 1300, 860);
+    text("PLAY GAME", 1300, 870);
     popMatrix();
     
 
@@ -68,6 +70,7 @@ void SelectDifficulty() {
       barWidth = 200;
       fill(barColor);
       rect(250, 600, barWidth, 9, 7);
+      level = "House Cat";
     }
     if (mousePressed && mouseX >= 450 && mouseX <= 650
       && mouseY >= 500 && mouseY <= 800) { //Bobcat
@@ -76,6 +79,7 @@ void SelectDifficulty() {
       difficulty = 200; 
       fill(barColor);
       rect(250, 600, barWidth, 9, 7);
+      level = "Bobcat";
     }    
     if (mousePressed && mouseX >= 650 && mouseX <= 850
       && mouseY >= 500 && mouseY <= 800) { //Lion
@@ -84,6 +88,7 @@ void SelectDifficulty() {
       barWidth = 600;
       fill(barColor);
       rect(250, 600, barWidth, 9, 7);
+      level = "Lion";
     } 
     if (mousePressed && mouseX >= 850 && mouseX <= 1050
       && mouseY >= 500 && mouseY <= 800) { //Sabretooth Tiger
@@ -92,6 +97,7 @@ void SelectDifficulty() {
       barWidth = 800;
       fill(barColor);
       rect(250, 600, barWidth, 9, 7);
+      level = "Sabretooth Tiger";
     }     
     if (mousePressed && mouseX >= 1050 && mouseX <= 1250
       && mouseY >= 500 && mouseY <= 800) { //ImPAWsible
@@ -100,5 +106,6 @@ void SelectDifficulty() {
       barWidth = 1000;
       fill(barColor);
       rect(250, 600, barWidth, 9, 7);
+      level = "ImPAWsible";
     }
 }

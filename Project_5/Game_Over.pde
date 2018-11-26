@@ -14,12 +14,6 @@ clear();
       hue = 360 - modifier;
       hue = 0; 
     }
-    
-    String lose = "Oops, looks like time's up! That’s paw-ful. Just kitten! " +
-      "You did\n a great job and should try again. I’m sure you’ll beat your\n previous score!";
-      
-    String win = "You win!!! You made a paw-sitively purr-fect copy!\n Try playing again at a higher difficulty!";  
-    
     fill(color(#ba2644));
     textAlign(CENTER);
     textSize(100);
@@ -27,16 +21,19 @@ clear();
     fill(color(#00bcb5));
     textAlign(CENTER);
     textSize(40);
-    text("Final Score: " + score, width/2, height/2 - 100);
-    colorMode(RGB);
-    textSize(14);
-    fill(#46F05B);
-    fill(255);
-    textSize(24);
+    text("Difficulty: " + level, width/2, height/2 - 100);
+    text("Final Score: " + score, width/2, height/2 - 50);
     
+    String lose = "Oops, looks like time's up! That’s paw-ful. Just kitten! " +
+      "You did\n a great job and should try again. I’m sure you’ll beat your\n previous score!";
+      
+    String win = "You win!!! You made a paw-sitively purr-fect copy!\n Try playing again at a higher difficulty!";  
+    
+    
+    fill(255);
     if(score >= 999) {
-      text(win, width/2, height/2 + -20);
+      text(win, width/2, height/2 + 20);
     } else if (score < 999) {
-      text(lose, width/2, height/2 + -20);
+      text(lose, width/2, height/2 + 20);
     }
  ; }

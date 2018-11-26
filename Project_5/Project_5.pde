@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 PFont ourFont;
 
+
 int musicCounter = 0;
 int musicCounter2 = 0;
 int canvasWidth = 1500;
@@ -16,6 +17,7 @@ PImage color1button;
 PImage color2button;
 PImage color3button;
 PImage eraserbutton;
+PImage welcomeCat;
 boolean modeCopy = false;
 float score = 0;
 float maxScore = gridWidth;
@@ -89,6 +91,8 @@ void setup() {
   color3button.resize(100, 100);
   eraserbutton = loadImage("eraser.png");
   eraserbutton.resize(100, 100);
+  welcomeCat = loadImage("cat1.jpg");
+  welcomeCat.resize(250,250);
 }
 
 void draw() {
@@ -129,7 +133,15 @@ void makerMode(){
   // clears the background only once
   while (count < 1) {
     background(255);
+    fill(#ffcecc);
+    rect(gridWidth + 1, 0, width - gridWidth, height);
     count++;
+    pushStyle();
+    textSize(40);
+    textAlign(CENTER);
+    fill(#4c072c);
+    text("Press Space Bar \n To Change Players", 1250, height/2 + 300);
+    popStyle();
   }
   
   for (int i = 0; i < gridWidth; i += difficulty) {
@@ -140,9 +152,14 @@ void makerMode(){
   line(gridWidth, 0, gridWidth, gridHeight);
   image(logo, 1070, 50);
   textSize(30);
-  fill(255);
-  rect(1040, 930, 400, 100);
-  fill(0);
+  fill(#ffcecc);
+  rect(1040, height/2 , 400, 200);
+  pushStyle();
+  textSize(65);
+  fill(blockColor);
+  textAlign(CENTER);
+  text("Player " + player + "'s \n Turn!", 1250, height/2 + 70);
+  popStyle();
   
   int mouseConstrainX = difficulty * Math.round(mouseX/difficulty);
   int mouseConstrainY = difficulty * Math.round(mouseY/difficulty);
@@ -176,6 +193,8 @@ void copyMode() {
   } else {
   if (!erased) { 
    background(255);
+   fill(#ffcecc);
+   rect(gridWidth + 1, 0, width - gridWidth, height);
    erased = true;
    playerSelect = true;
   }
@@ -187,7 +206,7 @@ void copyMode() {
     image(eraserbutton, 1250, 550);
     pushStyle();
     textAlign(LEFT);
-    fill(255);
+    fill(#ffcecc);
     rect(1040, 830, 400, 100);
     rect(1040, 730, 400, 100);
     rect(1040, 660, 400, 70);
@@ -211,7 +230,7 @@ void copyMode() {
   pushStyle();
   textAlign(LEFT);
   textSize(24);
-  fill(255);
+  fill(#ffcecc);
   rect(1040, 930, 400, 100);
   fill(#4c072c);
   text("Time Left: " + nf(startTimer.getTime(), 0, 2) + " seconds", 1050, 980);
@@ -254,7 +273,7 @@ void livesUpdate(){
   lives--;
   pushStyle();
   textAlign(LEFT);
-  fill(255);
+  fill(#ffcecc);
   rect(1040, 730, 400, 100);
   fill(#4c072c);
   text("Lives left: " + lives + " / 9", 1050, 780);
@@ -279,7 +298,7 @@ void scoreUpdate(int x, int y){
   }
   pushStyle();
   textAlign(LEFT);
-  fill(255);
+  fill(#ffcecc);
   rect(1040, 830, 400, 100);
   fill(#4c072c);
   text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
@@ -301,7 +320,7 @@ void scoreUpdateEraser(int x, int y, int oldColor) {
   }
   pushStyle();
   textAlign(LEFT);
-  fill(255);
+  fill(#ffcecc);
   rect(1040, 830, 400, 100);
   fill(#4c072c);
   text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
