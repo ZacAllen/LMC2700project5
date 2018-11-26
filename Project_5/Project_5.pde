@@ -390,17 +390,11 @@ void mouseClicked() {
    // Difficulty screen button
    if (diffSelect && mouseX >= 1100 && mouseY >= 800 
       && mouseX <= 1400 && mouseY <= 900) {
-<<<<<<< HEAD
      diffSelect = false; 
      int randIndex = rand.nextInt(3);
      meows.get(randIndex).play();
-     
-     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-     
-     
-=======
+
      diffSelect = false;
->>>>>>> f9a9a7e4180d99d03e1eb4842c15cfe79605f833
      filled = new int[gridWidth/difficulty][gridHeight/difficulty];
      copyFilled = new int[gridWidth/difficulty][gridHeight/difficulty];
    }
