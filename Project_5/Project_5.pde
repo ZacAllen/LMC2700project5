@@ -1,8 +1,9 @@
 import processing.sound.*;
-
+import java.util.ArrayList;
+import java.util.Random;
 PFont ourFont;
 
-import java.util.ArrayList;
+
 int musicCounter = 0;
 int musicCounter2 = 0;
 int canvasWidth = 1500;
@@ -56,6 +57,10 @@ int [][] copyFilled;
 
 SoundFile neko;
 SoundFile nekofast;
+SoundFile meow1, meow2, meow3;
+
+ArrayList<SoundFile> meows;
+Random rand = new Random();
 
 void settings() {
    size(canvasWidth, canvasHeight); 
@@ -64,6 +69,13 @@ void settings() {
 void setup() {
   neko = new SoundFile(this, "NekoAtsume.wav");
   nekofast = new SoundFile(this, "NekoAtsumeFast.wav");
+  meow1 = new SoundFile(this, "meow1.wav");
+  meow2 = new SoundFile(this, "meow2.wav");
+  meow3 = new SoundFile(this, "meow3.wav");
+  meows = new ArrayList<SoundFile>();
+    meows.add(meow1);
+    meows.add(meow2);
+    meows.add(meow3);
   background(255);
   startTimer = new Timer(45);
   logo = loadImage("logo.jpg");
@@ -351,16 +363,22 @@ void mouseClicked() {
       && mouseX <= width/2 + 250 && mouseY <= height - 70) {
       welcomeScreen = false;
       diffSelect = true;
+      int randIndex = rand.nextInt(3);
+      meows.get(randIndex).play();
    }
    // P4 transition screen button
    if (!P4begin && P4SplashScreen && mouseX >= width/2 - 250 && mouseY >= height - 150 
       && mouseX <= width/2 + 250 && mouseY <= height - 70) {
       P4begin = true;
+      int randIndex = rand.nextInt(3);
+      meows.get(randIndex).play();
    }
    // Difficulty screen button
    if (diffSelect && mouseX >= 1100 && mouseY >= 800 
       && mouseX <= 1400 && mouseY <= 900) {
      diffSelect = false; 
+     int randIndex = rand.nextInt(3);
+     meows.get(randIndex).play();
      
      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
      
@@ -381,6 +399,8 @@ void mouseClicked() {
      && mouseY >= 660 && mouseY <= 730) {
        GameOver();
        startTimer.setTime(0.00);
+       int randIndex = rand.nextInt(3);
+       meows.get(randIndex).play();
     }
 
    
