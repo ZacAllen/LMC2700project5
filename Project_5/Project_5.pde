@@ -101,11 +101,11 @@ void draw() {
   if (welcomeScreen) {
     Welcome();
   } 
-  // debugging ONLY /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  else if (compare) {
-    previewScreen();
-  }
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //// debugging ONLY /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //else if (compare) {
+  //  previewScreen();
+  //}
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   else {
   System.out.println("Mouse X: " + mouseX + "Mouse Y: " + mouseY);
@@ -167,8 +167,13 @@ void makerMode(){
 
 //this is a mode for player 4.
 void copyMode() {
+  saveFirst();
   if (!P4begin) {
-    P4Turn();
+    if (showPreview) {
+      previewScreen();
+    } else {
+      P4Turn();
+    }
   } else {
   if (!erased) { 
    background(255);
@@ -366,16 +371,26 @@ void mouseClicked() {
       int randIndex = rand.nextInt(3);
       meows.get(randIndex).play();
    }
+   
+   
    // P4 transition screen button
-   if (!P4begin && P4SplashScreen && mouseX >= width/2 - 250 && mouseY >= height - 150 
+   if (!P4begin && P4SplashScreen && !showPreview && mouseX >= width/2 - 250 && mouseY >= height - 150 
+      && mouseX <= width/2 + 250 && mouseY <= height - 70) {
+      P4SplashScreen = false;
+      showPreview = true;
+   }
+   if (!P4begin && !P4SplashScreen && showPreview && mouseX >= width/2 - 250 && mouseY >= height - 150 
       && mouseX <= width/2 + 250 && mouseY <= height - 70) {
       P4begin = true;
       int randIndex = rand.nextInt(3);
       meows.get(randIndex).play();
    }
+   
+   
    // Difficulty screen button
    if (diffSelect && mouseX >= 1100 && mouseY >= 800 
       && mouseX <= 1400 && mouseY <= 900) {
+<<<<<<< HEAD
      diffSelect = false; 
      int randIndex = rand.nextInt(3);
      meows.get(randIndex).play();
@@ -383,14 +398,19 @@ void mouseClicked() {
      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
      
      
+=======
+     diffSelect = false;
+>>>>>>> f9a9a7e4180d99d03e1eb4842c15cfe79605f833
      filled = new int[gridWidth/difficulty][gridHeight/difficulty];
      copyFilled = new int[gridWidth/difficulty][gridHeight/difficulty];
-     
-     
-     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    }
+   
+   //if (p4turn && !showPreview && mouseX >= 500 && mouseX <= 1000
+   //  && mouseY >= 800 && mouseY <= 900) {
+   //  showPreview = true;
+   //}
 
-   if (p4turn && mouseX >= 500 && mouseX <= 1000
+   if (p4turn /*&& showPreview*/&& mouseX >= 500 && mouseX <= 1000
      && mouseY >= 800 && mouseY <= 900) {
      p4turn = false; 
    }
@@ -404,8 +424,9 @@ void mouseClicked() {
     }
 
    
+   
+   
    // P4's color select buttons
-
    if (mouseX >= 1100 && mouseY >= 400 
      && mouseX <= 1200 && mouseY <= 500) {
     player = 1;
@@ -428,5 +449,4 @@ void mouseClicked() {
          blockColor = erasercolor;
        }
    }
-
 }
