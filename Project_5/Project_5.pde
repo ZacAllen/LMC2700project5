@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Random;
 PFont ourFont;
 
-
 int musicCounter = 0;
 int musicCounter2 = 0;
 int canvasWidth = 1500;

@@ -25,7 +25,7 @@ void previewScreen() {
 
 void saveFirst() {
   if (!firstCounter) {
-    savedFirst = get(0,0, gridWidth, gridHeight);
+    savedFirst = get(0,0, gridWidth + 1, gridHeight + 1);
     savedFirst.save("savedFirst.jpg");
     displayFirst = loadImage("savedFirst.jpg");
     displayFirst.resize(Math.round(firstHeight), Math.round(firstWidth));
