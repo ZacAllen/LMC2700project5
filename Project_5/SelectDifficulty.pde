@@ -54,6 +54,7 @@ void SelectDifficulty() {
     noFill();
     stroke(10);
     rect(250, 600, 1000, 10, 7);
+    time = 30;
     } else {
       noFill();
       stroke(10);
