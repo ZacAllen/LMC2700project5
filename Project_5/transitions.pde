@@ -38,7 +38,7 @@ void P4Turn(){
     fill(255);
     textSize(24);
     text("Players 1 through 3 have each had their turn. It is now your turn.\n You will have 10 seconds to look at the picture " + 
-    "and then\n " + time + " seconds to replicate the image on your own with the three\n colors used. Good luck and go cat-ch that purrfect" +
+    "and then\n " + time + " seconds to replicate the image on your own with the three\n colors used. Good luck and go cat-ch that purr-fect" +
     " score", width/2, height/2 + -20);
     
     textSize(36);

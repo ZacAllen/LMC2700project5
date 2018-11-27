@@ -26,10 +26,10 @@ clear();
     textSize(24);
     pushStyle();
     fill(0);
-    text("Hello, welcome to CopyCat. My name is Catpernicus, and I'm \npawsitively excited to have you join me today to play this \npawe-some game." + 
+    text("Hello, welcome to CopyCat. My name is Catpernicus, and I'm \npaw-sitively excited to have you join me today to play this \npawe-some game." + 
     "I have a good feline about this. We’re going \nto play a game called CopyCat and here are the rules.\n\n First, Player 1 will paint a certain amount of " +
     "squares red on a grid.\n Next, Player 2 will have a turn to paint some squares blue. \nThen Player 3 will do the same with green. From there, " + 
-    "Player 4\n will have ten seconds to look at the grid and then do their\n best to make a purrfect copy. Use the Space Bar to switch turns!", width/2, height/2 + -20);
+    "Player 4\n will have ten seconds to look at the grid and then do their\n best to make a purr-fect copy. Use the Space Bar to switch turns!", width/2, height/2 + -20);
     
     // Delayed pop-up of start button. Currently waits 2 seconds, we could change that number to be longer if we want
     if (second() > s + 2) {
