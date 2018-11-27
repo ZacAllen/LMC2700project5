@@ -71,6 +71,7 @@ void SelectDifficulty() {
       fill(barColor);
       rect(250, 600, barWidth, 9, 7);
       level = "House Cat";
+      time = 20;
     }
     if (mousePressed && mouseX >= 450 && mouseX <= 650
       && mouseY >= 500 && mouseY <= 800) { //Bobcat
@@ -80,6 +81,7 @@ void SelectDifficulty() {
       fill(barColor);
       rect(250, 600, barWidth, 9, 7);
       level = "Bobcat";
+      time = 30;
     }    
     if (mousePressed && mouseX >= 650 && mouseX <= 850
       && mouseY >= 500 && mouseY <= 800) { //Lion
@@ -89,6 +91,7 @@ void SelectDifficulty() {
       fill(barColor);
       rect(250, 600, barWidth, 9, 7);
       level = "Lion";
+      time = 40;
     } 
     if (mousePressed && mouseX >= 850 && mouseX <= 1050
       && mouseY >= 500 && mouseY <= 800) { //Sabretooth Tiger
@@ -98,6 +101,7 @@ void SelectDifficulty() {
       fill(barColor);
       rect(250, 600, barWidth, 9, 7);
       level = "Sabretooth Tiger";
+      time = 50;
     }     
     if (mousePressed && mouseX >= 1050 && mouseX <= 1250
       && mouseY >= 500 && mouseY <= 800) { //ImPAWsible
@@ -107,5 +111,7 @@ void SelectDifficulty() {
       fill(barColor);
       rect(250, 600, barWidth, 9, 7);
       level = "ImPAWsible";
+      time = 60;
     }
+    startTimer = new Timer(time);
 }

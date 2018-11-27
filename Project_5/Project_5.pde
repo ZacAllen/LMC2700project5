@@ -28,6 +28,7 @@ boolean playerSelect = false;
 int lives = 9;
 boolean alive = true;
 int oldColor;
+int time;
 
 // Variables for welcome screen
 int s = second();
@@ -78,7 +79,6 @@ void setup() {
     meows.add(meow2);
     meows.add(meow3);
   background(255);
-  startTimer = new Timer(45);
   logo = loadImage("logo.jpg");
   logo.resize(300, 300);
   ourFont = createFont("Snap ITC", 24);
