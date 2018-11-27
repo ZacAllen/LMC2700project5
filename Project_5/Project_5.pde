@@ -120,6 +120,7 @@ void draw() {
          nekofast.loop();
          musicCounter2++;  
        }
+      saveFirst();
       P4Turn();
     } else if (modeCopy) {
       copyMode();
@@ -183,7 +184,6 @@ void makerMode(){
 
 //this is a mode for player 4.
 void copyMode() {
-  saveFirst();
   if (!P4begin) {
     if (showPreview) {
       previewScreen();
