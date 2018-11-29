@@ -22,7 +22,7 @@ clear();
     textAlign(CENTER);
     textSize(40);
     text("Difficulty: " + level, width/2, height/2 - 100);
-    text("Final Score: " + score, width/2, height/2 - 50);
+    text("Final Score: " + Math.round(score), width/2, height/2 - 50);
     
     String lose = "Oops, looks like time's up! That’s paw-ful. Just kitten! " +
       "You did\n a great job and should try again. I’m sure you’ll beat your\n previous score!";

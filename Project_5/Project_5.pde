@@ -104,11 +104,11 @@ void draw() {
   if (welcomeScreen) {
     Welcome();
   } 
-  //// debugging ONLY /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //else if (compare) {
-  //  previewScreen();
-  //}
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // debugging ONLY /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  else if (showPreview) {
+    previewScreen();
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   else {
   System.out.println("Mouse X: " + mouseX + "Mouse Y: " + mouseY);
@@ -339,16 +339,15 @@ void keyPressed() {
   }
   
   // debugging ONLY /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  if (key == ENTER) {
-    if (compare) {
-      compare = false;
-    } else {
-      compare = true;
-    }
+  if (key == ENTER && showPreview) {
+    //p4turn = true;
+    showPreview = false;
+    P4begin = true;
   }
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  if(key == ' ') {
+  
+  if(key == ' ' && !diffSelect && !welcomeScreen) {
     player++;
   }
   
@@ -394,6 +393,7 @@ void mouseClicked() {
    // P4 transition screen button
    if (!P4begin && P4SplashScreen && !showPreview && mouseX >= width/2 - 250 && mouseY >= height - 150 
       && mouseX <= width/2 + 250 && mouseY <= height - 70) {
+      showPreview = true;                                                           // <- Displays the comparator screen when the button on P4's screen is clicked
       P4SplashScreen = false;
       showPreview = true;
    }
@@ -422,7 +422,7 @@ void mouseClicked() {
    //  showPreview = true;
    //}
 
-   if (p4turn /*&& showPreview*/&& mouseX >= 500 && mouseX <= 1000
+   if (p4turn && mouseX >= 500 && mouseX <= 1000
      && mouseY >= 800 && mouseY <= 900) {
      p4turn = false; 
    }
