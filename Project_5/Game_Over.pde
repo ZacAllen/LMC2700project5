@@ -1,5 +1,6 @@
 void GameOver(){
-clear();
+  saveSecond(); // saves P4's grid for comparison to the original
+  clear();
     background(#ffcecc);
     fill(#FFFFFF);
     fill(#75FF50);

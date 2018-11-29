@@ -7,6 +7,7 @@ float newConstrainY = difficulty/1.5 * Math.round(mouseY/(difficulty/1.5));
 
 int secondHeight;
 int secondWidth;
+
 //debugging
 boolean compare = false;
 
@@ -15,12 +16,22 @@ PImage displayFirst;
 boolean firstCounter = false;
 boolean showPreview = false;
 
+PImage savedSecond;
+PImage displaySecond;
+boolean secondCounter = false;
+boolean showFinalComparison = false;
+
 void previewScreen() {
   clear();
   pushStyle();
   background(#ffcecc);
   redrawFirst((width/2 - firstWidth/2), (height/2 - firstHeight/2));
   popStyle();
+}
+
+
+void finalComparison() {
+  
 }
 
 void saveFirst() {
@@ -33,10 +44,20 @@ void saveFirst() {
   }
 }
 
+void saveSecond() {
+  if (!secondCounter) {
+    savedSecond = get(0,0, gridWidth + 1, gridHeight + 1);
+    savedSecond.save("savedSecond.jpg");
+    displaySecond = loadImage("savedSecond.jpg");
+    displaySecond.resize(Math.round(firstHeight), Math.round(firstWidth));
+    secondCounter = true;
+  }
+}
+
 void redrawFirst(float startX, float startY) {
   image(displayFirst, startX, startY);
 }
 
-void redrawSecond() {
-
+void redrawSecond(float startX, float startY) {
+  image(displaySecond, startX, startY);
 }
