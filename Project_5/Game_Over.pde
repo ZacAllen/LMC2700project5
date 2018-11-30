@@ -1,3 +1,5 @@
+boolean gameOver = false;
+
 void GameOver(){
   saveSecond(); // saves P4's grid for comparison to the original
   clear();

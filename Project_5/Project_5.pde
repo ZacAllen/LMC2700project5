@@ -177,9 +177,9 @@ void makerMode(){
     System.out.println("Array is out of bounds");
   }
   
-  if (transitions) {
-    transitionsBox();
-  }
+  //if (transitions) {
+  //  transitionsBox();
+  //}
 }
 
 //this is a mode for player 4.
@@ -330,19 +330,22 @@ void scoreUpdateEraser(int x, int y, int oldColor) {
 void keyPressed() {
   //if(key == ' ' && !welcomeScreen && !diffSelect) {
   // debugging
-  if (key == 't') {
-    if (transitions) {
-      transitions = false;
-    } else {
-      transitions = true;
-    }
-  }
+  //if (key == 't') {
+  //  if (transitions) {
+  //    transitions = false;
+  //  } else {
+  //    transitions = true;
+  //  }
+  //}
   
   // debugging ONLY /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   if (key == ENTER && showPreview) {
     //p4turn = true;
     showPreview = false;
     P4begin = true;
+  }
+  if (key == ENTER && gameOver) {
+    replay();
   }
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -429,6 +432,7 @@ void mouseClicked() {
    
    if (P4begin && mouseX >= 1040 && mouseX <= 1440
      && mouseY >= 660 && mouseY <= 730) {
+       gameOver = true;
        GameOver();
        startTimer.setTime(0.00);
        int randIndex = rand.nextInt(3);

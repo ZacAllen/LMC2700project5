@@ -4,8 +4,8 @@
 boolean P4begin = false;
 boolean P4SplashScreen = false;
 
-// basic transitions instance variables
-boolean transitions = false;
+//// basic transitions instance variables
+//boolean transitions = false;
 
 void P4Turn(){
   clear();
@@ -51,8 +51,8 @@ void P4Turn(){
   }
   
   
-// transition screens for players 1-3
-void transitionsBox() {
-  fill(#ffcecc);
-  rect(width/2 - 375, height/2 - 250, 750, 500);
-}
+//// transition screens for players 1-3
+//void transitionsBox() {
+//  fill(#ffcecc);
+//  rect(width/2 - 375, height/2 - 250, 750, 500);
+//}

@@ -2,11 +2,11 @@
 
 float firstHeight = gridHeight/1.5;
 float firstWidth = gridWidth/1.5;
-float newConstrainX = difficulty/1.5 * Math.round(mouseX/(difficulty/1.5));
-float newConstrainY = difficulty/1.5 * Math.round(mouseY/(difficulty/1.5));
+//float newConstrainX = difficulty/1.5 * Math.round(mouseX/(difficulty/1.5));
+//float newConstrainY = difficulty/1.5 * Math.round(mouseY/(difficulty/1.5));
 
-int secondHeight;
-int secondWidth;
+//int secondHeight;
+//int secondWidth;
 
 //debugging
 boolean compare = false;
