@@ -1,3 +1,5 @@
+//CopyCat
+// Zach Allen, Kameron Barrow, Joseph Meredith & Paula Torres-Wilcken
 import processing.sound.*;
 import java.util.ArrayList;
 import java.util.Random;
