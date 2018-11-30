@@ -2,11 +2,6 @@
 
 float firstHeight = gridHeight/1.5;
 float firstWidth = gridWidth/1.5;
-//float newConstrainX = difficulty/1.5 * Math.round(mouseX/(difficulty/1.5));
-//float newConstrainY = difficulty/1.5 * Math.round(mouseY/(difficulty/1.5));
-
-//int secondHeight;
-//int secondWidth;
 
 //debugging
 boolean compare = false;
@@ -31,14 +26,10 @@ void previewScreen() {
   fill(#ffcecc);
   rect(1040, 930, 400, 100);
   fill(#4c072c);
-  text("Time Left: " + nf(peekTimer.getTime(), 0, 2) + " seconds", 1050, 980);
-  redrawFirst((width/2 - firstWidth/2), (height/2 - firstHeight/2));
+  text("Time Left: " + nf(peekTimer.getTime(), 0, 2), 1050, 980);
+  text(" seconds", 1275, 980);
+  redrawFirst((width/2 - firstWidth/2), (height/2 - firstHeight/2), Math.round(firstHeight));
   popStyle();
-}
-
-
-void finalComparison() {
-  
 }
 
 void saveFirst() {
@@ -61,10 +52,12 @@ void saveSecond() {
   }
 }
 
-void redrawFirst(float startX, float startY) {
+void redrawFirst(float startX, float startY, int resize) {
+  displayFirst.resize(resize, resize);
   image(displayFirst, startX, startY);
 }
 
-void redrawSecond(float startX, float startY) {
+void redrawSecond(float startX, float startY, int resize) {
+  displaySecond.resize(resize, resize);
   image(displaySecond, startX, startY);
 }
