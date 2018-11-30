@@ -1,4 +1,5 @@
 void replay() {
+  nekofast.stop();
 
   // instance vars from Project5
   musicCounter = 0;
