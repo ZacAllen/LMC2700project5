@@ -35,10 +35,10 @@ void GameOver(){
     
     fill(255);
     if(score >= 999) {
-      textSize(30);
+      textSize(25);
       text(win, width/2, height/2 + 20);
     } else if (score < 999) {
-      textSize(30);
+      textSize(25);
       text(lose, width/2, height/2 + 20);
     }
  ; }
