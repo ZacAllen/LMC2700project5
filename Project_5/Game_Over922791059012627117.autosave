@@ -1,8 +1,5 @@
-boolean gameOver = false;
-
 void GameOver(){
-  saveSecond(); // saves P4's grid for comparison to the original
-  clear();
+clear();
     background(#ffcecc);
     fill(#FFFFFF);
     fill(#75FF50);
@@ -25,20 +22,18 @@ void GameOver(){
     textAlign(CENTER);
     textSize(40);
     text("Difficulty: " + level, width/2, height/2 - 100);
-    text("Final Score: " + Math.round(score), width/2, height/2 - 50);
+    text("Final Score: " + score, width/2, height/2 - 50);
     
     String lose = "Oops, looks like time's up! That’s paw-ful. Just kitten! " +
-      "You did\n a great job and made a cool design in the process. You should try again. I’m sure you’ll beat your\n previous score!";
+      "You did\n a great job and should try again. I’m sure you’ll beat your\n previous score!";
       
     String win = "You win!!! You made a paw-sitively purr-fect copy!\n Try playing again at a higher difficulty!";  
     
     
     fill(255);
     if(score >= 999) {
-      textSize(30);
       text(win, width/2, height/2 + 20);
     } else if (score < 999) {
-      textSize(30);
       text(lose, width/2, height/2 + 20);
     }
  ; }
