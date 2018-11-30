@@ -27,6 +27,15 @@ class Timer{
     }
   }
   
+  void peekCountDown(){
+    Time -= 1/frameRate;
+    if (Time < 0) {
+      Time = 0.0;
+      showPreview = false;
+      P4begin = true;
+    }
+  }
+  
   float getMin(float set){
     Min = set / 60;
     return(Min);

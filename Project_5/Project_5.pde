@@ -12,6 +12,7 @@ int gridWidth = 1000;
 int gridHeight = 1000;
 int difficulty = 100;
 Timer startTimer;
+Timer peekTimer;
 PImage logo;
 PImage color1button;
 PImage color2button;

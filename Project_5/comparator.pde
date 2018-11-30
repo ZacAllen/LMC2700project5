@@ -23,8 +23,15 @@ boolean showFinalComparison = false;
 
 void previewScreen() {
   clear();
-  pushStyle();
   background(#ffcecc);
+  peekTimer.peekCountDown();
+  pushStyle();
+  textAlign(LEFT);
+  textSize(24);
+  fill(#ffcecc);
+  rect(1040, 930, 400, 100);
+  fill(#4c072c);
+  text("Time Left: " + nf(peekTimer.getTime(), 0, 2) + " seconds", 1050, 980);
   redrawFirst((width/2 - firstWidth/2), (height/2 - firstHeight/2));
   popStyle();
 }
