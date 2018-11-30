@@ -302,6 +302,9 @@ void scoreUpdate(int x, int y){
   fill(#ffcecc);
   rect(1040, 830, 400, 100);
   fill(#4c072c);
+  if (score >= 999) {
+   score = 1000; 
+  }
   text("Score: " + (int)score + " / " + (int)maxScore, 1050, 880);
   popStyle();
 }
