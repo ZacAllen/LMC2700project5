@@ -28,7 +28,7 @@ void GameOver(){
     text("Final Score: " + Math.round(score), width/2, height/2 - 50);
     
     String lose = "Oops, looks like time's up! That’s paw-ful. Just kitten! " +
-      "You did\n a great job and made a cool design in the process. You should try again. I’m sure you’ll beat your\n previous score!";
+      "\nYou did a great job and made a cool design in the process.\n You should try again. I’m sure you’ll beat your previous score!";
       
     String win = "You win!!! You made a paw-sitively purr-fect copy!\n Try playing again at a higher difficulty!";  
     

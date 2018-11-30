@@ -42,7 +42,7 @@ void P4Turn(){
     " score", width/2, height/2 + -20);
     
     textSize(36);
-    fill(#4c072c);
+    fill(#ba2644);
     text("Click Here to Begin", width/2, height - 100);
     noFill();
     stroke(#E6E6FA);
