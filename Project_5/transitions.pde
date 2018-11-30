@@ -48,6 +48,7 @@ void P4Turn(){
     stroke(#E6E6FA);
     rect(width/2 - 250, height - 150, 500, 80);
     popStyle();
+    peekTimer = new Timer(10);
   }
   
   
