@@ -1,4 +1,4 @@
-//CopyCat
+// CopyCat
 // Zach Allen, Kameron Barrow, Joseph Meredith & Paula Torres-Wilcken
 import processing.sound.*;
 import java.util.ArrayList;
@@ -220,6 +220,18 @@ void copyMode() {
     text("STOP", 1140, 715);
     popStyle();
     
+    if (player == 1) {
+      pushStyle();
+      fill(player1color);
+      ellipse(1100, 400, 30, 30);
+      fill(#ffcecc);
+      stroke(#ffcecc);
+      ellipse(1100, 550, 32, 32);
+      ellipse(1250, 400, 32, 32);
+      stroke(0);
+      popStyle();
+      } 
+   
     playerSelect = false;
   }  
 
@@ -461,8 +473,9 @@ void mouseClicked() {
     ellipse(1100, 400, 30, 30);
     fill(#ffcecc);
     stroke(#ffcecc);
-    ellipse(1100, 550, 32, 32);
-    ellipse(1250, 400, 32, 32);
+    ellipse(1100, 550, 33, 33);
+    ellipse(1250, 400, 33, 33);
+    ellipse(1250, 550, 33, 33);    
     stroke(0);
    }
    else if (mouseX >= 1100 && mouseY >= 550 
@@ -474,8 +487,9 @@ void mouseClicked() {
      ellipse(1100, 550, 30, 30);
      fill(#ffcecc);
      stroke(#ffcecc);
-     ellipse(1100, 400, 32, 32);
-     ellipse(1250, 400, 32, 32);
+     ellipse(1100, 400, 33, 33);
+     ellipse(1250, 400, 33, 33);
+     ellipse(1250, 550, 33, 33);
      stroke(0);
 
    }
@@ -488,8 +502,9 @@ void mouseClicked() {
        ellipse(1250, 400, 30, 30);
        fill(#ffcecc);
        stroke(#ffcecc);
-       ellipse(1100, 400, 32, 32);
-       ellipse(1100, 550, 32, 32);
+       ellipse(1100, 400, 33, 33);
+       ellipse(1100, 550, 33, 33);
+       ellipse(1250, 550, 33, 33);
        stroke(0);
 
    }
@@ -498,6 +513,15 @@ void mouseClicked() {
        if (alive) {
          player = 0;
          blockColor = erasercolor;
+         
+         fill(erasercolor);
+         ellipse(1250, 550, 30, 30);
+         fill(#ffcecc);
+         stroke(#ffcecc);
+         ellipse(1100, 400, 33, 33);
+         ellipse(1100, 550, 33, 33);
+         ellipse(1250, 400, 33, 33);
+         stroke(0);
        }
    }
 }
