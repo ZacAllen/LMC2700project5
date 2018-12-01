@@ -456,16 +456,42 @@ void mouseClicked() {
      && mouseX <= 1200 && mouseY <= 500) {
     player = 1;
     blockColor = player1color;
+   
+    fill(player1color);
+    ellipse(1100, 400, 30, 30);
+    fill(#ffcecc);
+    stroke(#ffcecc);
+    ellipse(1100, 550, 32, 32);
+    ellipse(1250, 400, 32, 32);
+    stroke(0);
    }
    else if (mouseX >= 1100 && mouseY >= 550 
      && mouseX <= 1200 && mouseY <= 650) {
      player = 2;
      blockColor = player2color;
+     
+     fill(player2color);
+     ellipse(1100, 550, 30, 30);
+     fill(#ffcecc);
+     stroke(#ffcecc);
+     ellipse(1100, 400, 32, 32);
+     ellipse(1250, 400, 32, 32);
+     stroke(0);
+
    }
    else if (mouseX >= 1250 && mouseY >= 400
      && mouseX <= 1350 && mouseY <= 500) {
        player = 3;
        blockColor = player3color;
+       
+       fill(player3color);
+       ellipse(1250, 400, 30, 30);
+       fill(#ffcecc);
+       stroke(#ffcecc);
+       ellipse(1100, 400, 32, 32);
+       ellipse(1100, 550, 32, 32);
+       stroke(0);
+
    }
    else if (mouseX >= 1250 && mouseY >= 550
      && mouseX <= 1350 && mouseY <= 650) {
