@@ -33,11 +33,11 @@ void GameOver(){
     fill(color(#00bcb5));
     textAlign(CENTER);
     textSize(40);
-    text("Difficulty: " + level, width/2, height/2 - 100);
-    text("Final Score: " + Math.round(score), width/2, height/2 - 50);
+    text("Difficulty: " + level, width/2, (height/8) + 4);
+    text("Final Score: " + Math.round(score), width/2, (height/6) + 2);
     
     
-    redrawFirst(width/2 - (gridHeight/2 + 75), height/2 - 300, Math.round(gridWidth/2));
+    redrawFirst(width/2 - (gridWidth/2 + 75), height/2 - 300, Math.round(gridWidth/2));
     redrawSecond(width/2 + 75, height/2 - 300, Math.round(gridHeight/2));
     
     String lose = "Oops, looks like time's up! That’s paw-ful. Just kitten! " +
@@ -49,9 +49,9 @@ void GameOver(){
     fill(255);
     if(score >= 999) {
       textSize(25);
-      text(win, width/2, height/2 + 20);
+      text(win, width/2, (height/2) - 300 + (gridWidth/2 + 75) - 30);
     } else if (score < 999) {
       textSize(25);
-      text(lose, width/2, height/2 + 20);
+      text(lose, width/2, (height/2) - 300 + (gridWidth/2 + 75) - 30);
     }
  ; }

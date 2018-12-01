@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Random;
 PFont ourFont;
 
-
 int musicCounter = 0;
 int musicCounter2 = 0;
 int canvasWidth = 1500;
@@ -157,6 +156,7 @@ void makerMode(){
   image(logo, 1070, 50);
   textSize(30);
   fill(#ffcecc);
+  noStroke();
   rect(1040, height/2 , 400, 200);
   pushStyle();
   textSize(65);
@@ -179,10 +179,6 @@ void makerMode(){
     // Prevents the game from crashing if clicked outside window
     System.out.println("Array is out of bounds");
   }
-  
-  //if (transitions) {
-  //  transitionsBox();
-  //}
 }
 
 //this is a mode for player 4.
@@ -349,16 +345,6 @@ void scoreUpdateEraser(int x, int y, int oldColor) {
 }
 
 void keyPressed() {
-  //if(key == ' ' && !welcomeScreen && !diffSelect) {
-  // debugging
-  //if (key == 't') {
-  //  if (transitions) {
-  //    transitions = false;
-  //  } else {
-  //    transitions = true;
-  //  }
-  //}
-  
   // debugging ONLY /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   if (key == ENTER && showPreview) {
     //p4turn = true;
@@ -400,7 +386,6 @@ void keyPressed() {
       p4stopper++;
     }
   }
-  //}
 }
 
 void mouseClicked() {
@@ -417,7 +402,7 @@ void mouseClicked() {
    // P4 transition screen button
    if (!P4begin && P4SplashScreen && !showPreview && mouseX >= width/2 - 250 && mouseY >= height - 150 
       && mouseX <= width/2 + 250 && mouseY <= height - 70) {
-      showPreview = true;                                                           // <- Displays the comparator screen when the button on P4's screen is clicked
+      showPreview = true;                                          // <- Displays the comparator screen when the button on P4's screen is clicked
       P4SplashScreen = false;
       showPreview = true;
    }
@@ -441,11 +426,6 @@ void mouseClicked() {
      copyFilled = new int[gridWidth/difficulty][gridHeight/difficulty];
    }
    
-   //if (p4turn && !showPreview && mouseX >= 500 && mouseX <= 1000
-   //  && mouseY >= 800 && mouseY <= 900) {
-   //  showPreview = true;
-   //}
-
    if (p4turn && mouseX >= 500 && mouseX <= 1000
      && mouseY >= 800 && mouseY <= 900) {
      p4turn = false; 
@@ -469,8 +449,10 @@ void mouseClicked() {
     player = 1;
     blockColor = player1color;
    
+    // draws selection indicator
     fill(player1color);
     ellipse(1100, 400, 30, 30);
+    // erases previous selection indicator
     fill(#ffcecc);
     stroke(#ffcecc);
     ellipse(1100, 550, 33, 33);
@@ -483,8 +465,10 @@ void mouseClicked() {
      player = 2;
      blockColor = player2color;
      
+     // draws selection indicator
      fill(player2color);
      ellipse(1100, 550, 30, 30);
+     // erases previous selection indicator
      fill(#ffcecc);
      stroke(#ffcecc);
      ellipse(1100, 400, 33, 33);
@@ -498,8 +482,10 @@ void mouseClicked() {
        player = 3;
        blockColor = player3color;
        
+       // draws selection indicator
        fill(player3color);
        ellipse(1250, 400, 30, 30);
+       // erases previous selection indicator
        fill(#ffcecc);
        stroke(#ffcecc);
        ellipse(1100, 400, 33, 33);
@@ -514,8 +500,10 @@ void mouseClicked() {
          player = 0;
          blockColor = erasercolor;
          
+         // draws selection indicator
          fill(erasercolor);
          ellipse(1250, 550, 30, 30);
+         // erases previous selection indicator
          fill(#ffcecc);
          stroke(#ffcecc);
          ellipse(1100, 400, 33, 33);

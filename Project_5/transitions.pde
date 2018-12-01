@@ -4,9 +4,6 @@
 boolean P4begin = false;
 boolean P4SplashScreen = false;
 
-//// basic transitions instance variables
-//boolean transitions = false;
-
 void P4Turn(){
   clear();
   P4SplashScreen = true;
@@ -45,15 +42,9 @@ void P4Turn(){
     fill(#ba2644);
     text("Click Here to Begin", width/2, height - 100);
     noFill();
-    stroke(#E6E6FA);
+    noStroke();
+    //stroke(#E6E6FA);
     rect(width/2 - 250, height - 150, 500, 80);
     popStyle();
     peekTimer = new Timer(10);
   }
-  
-  
-//// transition screens for players 1-3
-//void transitionsBox() {
-//  fill(#ffcecc);
-//  rect(width/2 - 375, height/2 - 250, 750, 500);
-//}
