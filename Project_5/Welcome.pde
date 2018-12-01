@@ -31,13 +31,14 @@ clear();
     + "\nFrom there, Player 4 will have ten seconds to look at the design and then do their\n best to make a purr-fect copy. Use the Space Bar to switch turns!", width/2, height/2 + -50);
     
     // Delayed pop-up of start button. Currently waits 2 seconds, we could change that number to be longer if we want
-    if (second() > s + 2) {
+    //if (second() > s + 2) {
       textSize(36);
       fill(#ba2644);
       text("Click Here to Begin", width/2, height - 80);
       noFill();
-      stroke(#E6E6FA);
+      noStroke();
+      //stroke(#E6E6FA);
       rect(width/2 - 250, height - 120, 500, 80);
-    }
+    //}
     popStyle();
  ; }

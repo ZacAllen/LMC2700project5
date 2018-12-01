@@ -230,15 +230,18 @@ void copyMode() {
     }
   line(gridWidth, 0, gridWidth, gridHeight);
   startTimer.countDown();
-  pushStyle();
-  textAlign(LEFT);
-  textSize(24);
-  fill(#ffcecc);
-  rect(1040, 930, 400, 100);
-  fill(#4c072c);
-  text("Time Left: " + nf(startTimer.getTime(), 0, 2) + " seconds", 1050, 980);
+  if (!gameOver) {
+    pushStyle();
+    textAlign(LEFT);
+    textSize(24);
+    fill(#ffcecc);
+    rect(1040, 930, 400, 100);
+    fill(#4c072c);
+    text("Time Left: " + nf(startTimer.getTime(), 0, 2), 1050, 980);
+    text(" seconds", 1294, 980);
+    popStyle();
+  }
   
-  popStyle();
   int mouseConstrainX = difficulty * Math.round(mouseX/difficulty);
   int mouseConstrainY = difficulty * Math.round(mouseY/difficulty);
   
