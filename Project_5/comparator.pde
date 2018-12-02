@@ -29,6 +29,11 @@ void previewScreen() {
   text("Time Left: " + nf(peekTimer.getTime(), 0, 2), 1050, 980);
   text(" seconds", 1275, 980);
   redrawFirst((width/2 - firstWidth/2), (height/2 - firstHeight/2), Math.round(firstHeight));
+  
+  textAlign(CENTER);
+  textSize(50);
+  fill(player1color);
+  text("GET READY!", width/2, 100);
   popStyle();
 }
 
