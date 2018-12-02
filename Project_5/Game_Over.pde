@@ -33,8 +33,8 @@ void GameOver(){
     fill(color(#00bcb5));
     textAlign(CENTER);
     textSize(40);
-    text("Difficulty: " + level, width/2, (height/8) + 4);
-    text("Final Score: " + Math.round(score), width/2, (height/6) + 2);
+    text("Difficulty: " + level, width/2, (height/8) + 8);
+    text("Final Score: " + Math.round(score), width/2, (height/6) + 12);
     
     
     redrawFirst(width/2 - (gridWidth/2 + 75), height/2 - 300, Math.round(gridWidth/2));
@@ -45,6 +45,17 @@ void GameOver(){
       
     String win = "You win!!! You made a paw-sitively purr-fect copy!\n Try playing again at a higher difficulty!";  
     
+    pushStyle();
+    textSize(36);
+    fill(#ba2644);
+    text("Play Again", width/2 - 200, height - 90);
+    text("Quit", width/2 + 200, height - 90);
+    noFill();
+    //noStroke();
+    stroke(#E6E6FA);
+    rect(width/2 - 350, height - 140, 300, 80);
+    rect(width/2 + 130, height - 140, 150, 80);
+    popStyle();
     
     fill(255);
     if(score >= 999) {
