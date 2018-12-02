@@ -156,8 +156,10 @@ void makerMode(){
   image(logo, 1070, 50);
   textSize(30);
   fill(#ffcecc);
+  pushStyle();
   noStroke();
   rect(1040, height/2 , 400, 200);
+  popStyle();
   pushStyle();
   textSize(65);
   fill(blockColor);
@@ -170,7 +172,7 @@ void makerMode(){
   
   //control if spot has already been filled
   try {
-    if (mousePressed && filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] == 0 ) {
+    if (mousePressed && filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] == 0 && !gameOver) {
       fill(blockColor);
       rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
       filled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] = player;
@@ -255,7 +257,7 @@ void copyMode() {
   
   //control if spot has already been filled
   try {
-    if (mousePressed && player > 0 && copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] == 0 ) {
+    if (mousePressed && player > 0 && copyFilled[mouseConstrainX/difficulty][mouseConstrainY/difficulty] == 0 && !gameOver) {
       fill(blockColor);
       rect(mouseConstrainX, mouseConstrainY, difficulty, difficulty);
       //currently only responing to reds, need to add way to have player 4 change colors
@@ -431,16 +433,23 @@ void mouseClicked() {
      p4turn = false; 
    }
    
-   if (P4begin && mouseX >= 1040 && mouseX <= 1440
-     && mouseY >= 660 && mouseY <= 730) {
-       gameOver = true;
-       GameOver();
-       startTimer.setTime(0.00);
-       int randIndex = rand.nextInt(3);
-       meows.get(randIndex).play();
+    if (P4begin && mouseX >= 1040 && mouseX <= 1440
+      && mouseY >= 660 && mouseY <= 730) {
+      gameOver = true;
+      GameOver();
+      startTimer.setTime(0.00);
+      int randIndex = rand.nextInt(3);
+      meows.get(randIndex).play();
     }
-
-   
+    
+    // gameover screen buttons
+    if (gameOver && mouseX >= (width/2 - 350) && mouseX <= (width/2 - 50)
+      && mouseY >= (height - 140) && mouseY <= (height - 60)) {
+      replay();
+    } else if (gameOver && mouseX >= (width/2 + 130) && mouseX <= (width/2 + 280)
+      && mouseY >= (height - 140) && mouseY <= (height - 60)) {
+      exit();
+    }
    
    
    // P4's color select buttons
