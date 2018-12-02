@@ -42,8 +42,8 @@ void GameOver(){
     text("Play Again", width/2 - 200, height - 90);
     text("Quit", width/2 + 200, height - 90);
     noFill();
-    //noStroke();
-    stroke(#E6E6FA);
+    noStroke();
+    //stroke(#E6E6FA);
     rect(width/2 - 350, height - 140, 300, 80);
     rect(width/2 + 130, height - 140, 150, 80);
     popStyle();
