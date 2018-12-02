@@ -12,16 +12,7 @@ void GameOver(){
     fill(#FFFFFF);
     fill(#75FF50);
     colorMode(HSB);
-    double sin = sin(millis()/1000.0);
-    double hue = 0; // from 48 to 0, from 360 to 241
-
-    if (sin > 0) {
-      hue = 50.0 * sin;
-    } else {
-      double modifier = abs((float) (120.0 * sin));
-      hue = 360 - modifier;
-      hue = 0; 
-    }
+   
     fill(color(#ba2644));
     textAlign(CENTER);
     textSize(100);
